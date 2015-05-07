@@ -102,6 +102,7 @@ function setSize(){
 };
 setSize();
 $(window).load(function (){
+	var sliderHeight;
 	while(!sliderHeight){
 		sliderHeight = $('#slider img').css('height')
 		$('#slider').css('height',sliderHeight);
