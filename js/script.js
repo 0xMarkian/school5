@@ -109,6 +109,9 @@ setSize();
 ======				NAVIGATION	  				========
 ========================================================
 */
+function scrollTop(){
+	$('body,html').animate({scrollTop:0}, 800);
+}
 var clickBar = function(origin1,origin2,distance,direct,degNum){
 	// nav button style
 	$('nav > div').removeClass('navBlockActive');
@@ -136,6 +139,7 @@ var clickBar = function(origin1,origin2,distance,direct,degNum){
 
 			$('.home').addClass('homeHidden').delay(300).fadeOut();
 			$('#wrap').css('background','rgb(15,89,182)')
+			// $('body').css('overflow','hidden')
 			$('#cont').css('display','block');
 			setTimeout(function(){
 				$('#cont').removeClass('contHidden');
@@ -168,12 +172,13 @@ $('.mainNav >div:nth-child(3)').click(function(){$this = this; clickBar('0%','0%
 $('.mainNav >div:nth-child(4)').click(function(){$this = this; clickBar('0%','0%', '-'+height+'', 'X','90deg')});
 $('.mainNav >div:nth-child(5)').click(function(){$this = this; clickBar('0%','100%', '-'+height+'', 'X','-90deg')});
 $('.mainNav >div:nth-child(6)').click(function(){$this = this; clickBar('50%','0%', '-'+height+'', 'Y','-180deg')});
-// $('nav > div:nth-child(2)').click();
+$('nav > div:nth-child(6)').click();
 
 $('#cont > li').mouseover(function(){
 	$(this).css('box-shadow','inset 0 0 1vh 0 rgba(40,45,51,1)');
 })
 
+//navigation for option in menu
 $('.mainNav .ctg > div').click(function(){
 	var elemIndex = $(this).index();
 	var parentIndex = $(this).parent().parent().index();
@@ -181,11 +186,9 @@ $('.mainNav .ctg > div').click(function(){
 	$('#cont li > div').removeClass('sideActive');
 	$('#cont li:eq('+parentIndex+') > div:eq('+elemIndex+')').addClass('sideActive');
 })
-$('#cont li > div:nth-child(1)').addClass('sideActive');
 
-function scrollTop(){
-	$('body,html').animate({scrollTop:0}, 800);
-}
+$('#cont li > div:nth-child(2)').addClass('sideActive'); //make the first block active by default
+
 $('#logo').click(function(){
 	if( $(document).scrollTop() != 0 ){
 		var delay = 700;
@@ -371,3 +374,5 @@ $('.best-pupil').hover(function(){
 function(){
 	$this = this; block3dMouseOut('best-pupil','best-pupilHover');
 })
+
+

@@ -23,6 +23,7 @@ a {
 body,
 html {
   height: 100%;
+  width: 100%;
 }
 body {
   font-family: 'MuseoSansCyrl', Arial;
@@ -223,7 +224,7 @@ body {
 #wrap {
   width: 100%;
   height: 200%;
-  margin: 0 auto;
+  position: static;
   -webkit-perspective: 500px;
   -moz-perspective: 500px;
   -ms-perspective: 500px;
@@ -679,20 +680,20 @@ body {
 }
 #teach {
   width: 100%;
-  height: 205%;
+  height: 225%;
   z-index: 2;
-  margin-bottom: 8%;
+  overflow: hidden;
 }
 #teach .dynamic-image {
   width: 100%;
-  height: 28%;
+  height: 25%;
   background: rgba(60,125,255,0.9);
   -webkit-box-shadow: inset 0 -6vmax 0 0 #ffce00;
   box-shadow: inset 0 -6vmax 0 0 #ffce00;
 }
 #teach .teach-inner {
   width: 100%;
-  height: 72%;
+  height: 75%;
   text-align: center;
   background: #f2f6f9;
 }
@@ -715,7 +716,7 @@ body {
 }
 .block-area {
   width: 100%;
-  height: 58%;
+  height: 51%;
   margin: 0;
 }
 .block-area > div {
@@ -1272,7 +1273,7 @@ ul#cont {
 ul#cont li {
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   position: absolute;
   top: 0;
   left: 0;
@@ -1866,24 +1867,39 @@ ul#cont li.under {
 ======				comment: Page History		========
 ========================================================
 */
-#history-main .historyStep-wrap {
-  width: 80%;
-  height: 160%;
-  margin: 3% auto;
+#cont > li > #history-main {
+  background: url("img/history/bg.png") no-repeat center bottom;
+  background-color: rgba(225,225,225,0.45);
+  height: 190%;
 }
-#history-main .historyStep-wrap .general {
+#cont > li > #history-main .historyStep-wrap {
+  background: rgba(255,255,255,0.5);
+  width: 80%;
+  height: 95%;
+  margin: 3% auto;
+  font-weight: 500;
+}
+#cont > li > #history-main .historyStep-wrap img {
+  float: left;
+  margin-right: 5%;
+}
+#cont > li > #history-main .historyStep-wrap .general {
+  width: 85%;
+  margin: 0 7%;
   text-align: center;
 }
-#history-main .historyStep-wrap .general .title {
+#cont > li > #history-main .historyStep-wrap .general .title {
   font-size: 2.7vmax;
-  margin-bottom: 1%;
+  margin-bottom: 3%;
 }
-#history-main .historyStep-wrap .general .descrip {
+#cont > li > #history-main .historyStep-wrap .general .descrip {
   font-size: 1.4vmax;
+  text-align: left;
+  line-height: 140%;
 }
-#history-main .historyStep-wrap .yearStep {
+#cont > li > #history-main .historyStep-wrap .yearStep {
   width: 100%;
-  margin: 2%;
+  margin: 2% 0;
   background: rgba(0,0,0,0.01);
   padding: 2%;
   line-height: 150%;
@@ -1891,27 +1907,29 @@ ul#cont li.under {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   font-size: 1.5vmax;
 }
-#history-main .historyStep-wrap .yearStep:hover {
-  background: #5c8be7;
-  color: #fff;
+#cont > li > #history-main .historyStep-wrap .yearStep:hover {
+  background: rgba(225,225,225,0.45);
 }
-#history-main .historyStep-wrap .yearStep img {
-  width: 20%;
-  margin: 0 auto;
+#cont > li > #history-main .historyStep-wrap .yearStep img {
+  width: 30%;
+  border-bottom: 3vmax solid transparent;
 }
-#history-main .historyStep-wrap .yearStep #special {
+#cont > li > #history-main .historyStep-wrap .yearStep #special {
   margin-bottom: 5%;
 }
-#history-main .historyStep-wrap .yearStep .year {
-  font-size: 1.3vmax;
-  margin-bottom: 1%;
+#cont > li > #history-main .historyStep-wrap .yearStep .year {
+  font-size: 2vmax;
+  font-weight: bold;
+  color: #5c8be7;
+  margin: 1% 0;
+  text-align: center;
 }
 /*
 ========================================================
