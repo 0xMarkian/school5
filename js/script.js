@@ -89,6 +89,7 @@ function setSize(){
 	height = $('body').css('width');
 	navHeight = parseInt(height)/20;
 	var sliderHeight = $('#slider img').css('height');
+	console.log(sliderHeight);
 	$('#slider').css('height',sliderHeight);
 
 	// document css
@@ -101,7 +102,9 @@ function setSize(){
 	$('.top').css('transform','translate3d(0,0,-'+height+') rotateX(90deg)')
 
 };
-setSize();
+$(window).load(function (){
+	setSize();
+})
 
 
 /*
