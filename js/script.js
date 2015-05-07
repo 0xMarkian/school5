@@ -177,7 +177,7 @@ $('.mainNav >div:nth-child(3)').click(function(){$this = this; clickBar('0%','0%
 $('.mainNav >div:nth-child(4)').click(function(){$this = this; clickBar('0%','0%', '-'+height+'', 'X','90deg')});
 $('.mainNav >div:nth-child(5)').click(function(){$this = this; clickBar('0%','100%', '-'+height+'', 'X','-90deg')});
 $('.mainNav >div:nth-child(6)').click(function(){$this = this; clickBar('50%','0%', '-'+height+'', 'Y','-180deg')});
-$('nav > div:nth-child(6)').click();
+// $('nav > div:nth-child(6)').click();
 
 $('#cont > li').mouseover(function(){
 	$(this).css('box-shadow','inset 0 0 1vh 0 rgba(40,45,51,1)');
