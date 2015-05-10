@@ -84,7 +84,9 @@
 							$this,
 							deferMentTimeout,
 							navHeight;
-
+						var LGV = {
+							menuOptionClicked: false,
+						}//LGV - less global vars
 function setSize(){
 	height = $('body').css('width');
 	navHeight = parseInt(height)/20;
@@ -119,6 +121,11 @@ function scrollTop(){
 	$('body,html').animate({scrollTop:0}, 800);
 }
 var clickBar = function(origin1,origin2,distance,direct,degNum){
+	alert(LGV.menuOptionClicked);
+	if(!LGV.menuOptionClicked){
+		$('#cont li > div:nth-child(1)').addClass('sideActive');
+	}
+	LGV.menuOptionClicked = false;
 	// nav button style
 	$('nav > div').removeClass('navBlockActive');
 	$($this).addClass('navBlockActive');
@@ -186,14 +193,14 @@ $('#cont > li').mouseover(function(){
 
 //navigation for option in menu
 $('.mainNav .ctg > div').click(function(){
+	LGV.menuOptionClicked = true;
 	var elemIndex = $(this).index();
 	var parentIndex = $(this).parent().parent().index();
-
 	$('#cont li > div').removeClass('sideActive');
 	$('#cont li:eq('+parentIndex+') > div:eq('+elemIndex+')').addClass('sideActive');
 })
 
-$('#cont li > div:nth-child(2)').addClass('sideActive'); //make the first block active by default
+$('#cont li > div:nth-child(1)').addClass('sideActive'); //make the first block active by default
 
 $('#logo').click(function(){
 	if( $(document).scrollTop() != 0 ){
