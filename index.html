@@ -2,18 +2,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Спеціалізована школа №5 - Івано-Франківськ - Кращий навчальний заклад</title>
-	<link rel="stylesheet" href="style.css" class="cssfx">
+	<link rel="stylesheet" href="style.css">
 
 	<link href="stylesheets/media-queries.css" rel="stylesheet" type="text/css">
 	<meta name="google-site-verification" content="z0EzlMyihvx5VLjkjYJW1aCe-j16AqvYCKiGsHWhg6k" />
 	<meta name=”description” content=”Школа №5 м. Івано-Франківська - загальноосвітній навчальній заклад з поглибленим вивченням німецької мови. Тут надаються якісні освітні послуги для учнів 1 – 11-х класах, що є надійною базою для всебічного розвитку та майбутньої професійної діяльності. СШ №5 ІваноФранківськ. Новини школи №5.”/>	
 </head>
-<body lang="uk" onorientationchange="setSize()" onresize="setSize()">
+<body lang="uk" onorientationchange="setSize()" onresize="setSize()" itemscope itemtype="http://schema.org/School">
 	<div id="nav-panel">
 		<div class="mainNav-wrap">
 			<div id="logo">
-				<img src="img/logo.png">
-				<h2>Школа №5</h2>
+				<img itemprop="image" src="img/logo.png">
+				<h2 itemprop="name">Школа №5</h2>
 				<div id="home">На Головну</div>
 			</div>
 			<nav class="mainNav">
@@ -63,7 +63,7 @@
 	<div id="wrap">
 		<div class="home page">
 			<div id="slider">
-				<img class="dynamic-img" src="img/bg-3.jpg" alt="the best pupils our school">
+				<img class="dynamic-img" src="img/bg-3.jpg" alt="the best pupils our school" itemprop="image">
 				<div id="slider-info">
 					<h1>Найкраща освіта для кожного	</h1>
 					<div class="button">Дізнатися більше про нас</div>
@@ -391,11 +391,11 @@
 					<h1>Головне - це освіта. Професійна. Якісна</h1>
 					Саме це ми вам і пропонуємо.
 				</div>
-				<div id="abus-expres">
+				<div id="abus-expres" itemscope itemtype="http://schema.org/Review" itemprop="review">
 					<h2>Про нас говорять</h2>
 					<div id="expres-area">
 						<div class="expres">
-							<p>Наша школа має чудові традиції, професійний педагогічний склад, тут чудова атмосфера для формування і розвитку особистості учнів.</p>
+							<p itemprop="reviewBody">Наша школа має чудові традиції, професійний педагогічний склад, тут чудова атмосфера для формування і розвитку особистості учнів.</p>
 							<p class="autor">Невідомий автор</p>
 						</div>
 						<div class="expres">
@@ -425,9 +425,12 @@
 							<h2>Наш телефон</h2>
 							<p>+380 50-00-00-000</p>
 						</div>
-						<div>
+						<div itemscope itemtype="http://schema.org/PostalAddress" itemprop="adress">
 							<h2>Наша дреса</h2>
-							<p>м. Івано-Франківськ, вул. Франка, 19</p>
+							<p>
+								<span itemprop="adressLocality">м. Івано-Франківськ,</span> 
+								<span itemprop="streetAdress">вул. Франка, 19</span>
+							</p>
 						</div>
 						<div>
 							<h2>Наша пошта</h2>
