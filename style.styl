@@ -28,6 +28,10 @@ body
 	background:url('') no-repeat;
 	background-attachment:fixed;
 	-webkit-font-smoothing: antialiased;
+	.hideText
+		display block
+		position absolute
+		opacity 0
 /*
 ========================================================
 ======				comment: navigation 		========
@@ -1512,18 +1516,17 @@ background:rgba(0,0,0,.1);
 				}
 			}
 			h1.title{
-				top:22%;
-				font:{
-					size:2.2vmax;
-					weight:600;
-				}
-				padding:0 40%;
+				top 22%
+				font-size 2.6vmax
+				font-weight bold
+				padding:0 35%;
 				a{
 					width:auto;
 					transition: all .2s ease;
-					color:rgba(40,40,40,.8);
+					color:rgba(18,65,157,.8);
 					&:hover{
-						color:darken(rgba(92,139,231,1),25);
+						color:darken(@color,1);
+						text-shadow 0 0 .1vmax darken(@color,5);
 					}
 				}
 			}
