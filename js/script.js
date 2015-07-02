@@ -139,12 +139,13 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){//cBut -cli
 		parentButtonActive = cBut.parentElement.parentElement.className === 'buttonActive' ? true:false;//check whether this side of cube has already selected
 		$('.mainNav-wrap div').removeClass('buttonActive');
 		$('#cont3d li > div').removeClass('ctgSideActive');
-		cBut.className = cBut.className+' buttonActive'
+		$(cBut).addClass('buttonActive')
+
 
 		/*section where active category of cube side define*/
 		if(cBut.parentElement.className === 'ctg'){
 			var parentEl = cBut.parentElement.parentElement;
-			parentEl.className = parentEl.className+' buttonActive';
+			$(parentEl).addClass('buttonActive');
 			parentIndex = $(parentEl).index();
 			var elemIndex = $(cBut).index();
 
