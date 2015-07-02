@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 ========================================================
 ======				comment: my plygins		========
@@ -80,9 +82,9 @@
 		imgObj[nameImg].onload = onload;
 	}
 })(jQuery)
-
-
-
+function id(id){
+	return document.getElementById(id);
+}
 /*
  ========================================================
  ======				const css styles			========
@@ -94,17 +96,15 @@
 							deferMentTimeout,
 							navHeight;
 						var LGV = {
-							menuOptionClicked: false,
 						}//LGV - less global vars
 function setSize(){
-	height = $('body').css('width');
-	navHeight = parseInt(height)/20;
-	
+	height = document.documentElement.clientWidth;
+	navHeight = height/20;
+	height = height+'px'
 
 	// document css
-	$('#wrap').css('height',height);
-	$('#nav-panel').css('height',parseInt(height)/20);
-
+	id('wrap').style.height=height;
+	id('nav-panel').style.height= (parseInt(height)/20)+'px';
 	// Cube css styles
 	$('.under').css('transform','translate3d(0,0,-'+height+') rotateY(180deg)');
 	$('.bottom').css('transform','translate3d(0,0,-'+height+') rotateX(-90deg)');
@@ -120,109 +120,149 @@ setSize();
 ======				NAVIGATION	  				========
 ========================================================
 */
-function scrollTop(){
-	$('body,html').animate({scrollTop:0}, 800);
+
+var navPanel = document.getElementById('nav-panel');
+
+function scrollTop(speed){
+	speed = speed || 800;
+	$('body,html').animate({scrollTop:0}, speed);
 }
-var clickBar = function(origin1,origin2,distance,direct,degNum){
-	if(!LGV.menuOptionClicked){
-		$('#cont li > div:nth-child(1)').addClass('sideActive');
-	}
-	LGV.menuOptionClicked = false;
-	// nav button style
-	$('nav > div').removeClass('navBlockActive');
-	$($this).addClass('navBlockActive');
+var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){//cBut -clicked button
+	if( !$(cBut).hasClass('buttonActive') ){
+		/*declare function global variables*/
+		var cube3d = document.getElementById('cont3d'),
+			delay,parentIndex,
+			setNewCubePos,
+			setSmallCube,
+			toHPMove,toNHPMove,
+			parentButtonActive;//HP - Home Page, NHP - Not Home Pages
+		parentButtonActive = cBut.parentElement.parentElement.className === 'buttonActive' ? true:false;//check whether this side of cube has already selected
+		$('.mainNav-wrap div').removeClass('buttonActive');
+		$('#cont3d li > div').removeClass('ctgSideActive');
+		cBut.className = cBut.className+' buttonActive'
 
-	// cube rotating
-	if( $(document).scrollTop() != 0 ){
-		var delay = 500;
-		scrollTop();
-	}else{
-		delay = 0;
-	}
-	setTimeout(function(){
-		// setVariables
-		var parentIndex =  $($this).index();
+		/*section where active category of cube side define*/
+		if(cBut.parentElement.className === 'ctg'){
+			var parentEl = cBut.parentElement.parentElement;
+			parentEl.className = parentEl.className+' buttonActive';
+			parentIndex = $(parentEl).index();
+			var elemIndex = $(cBut).index();
 
-		var setNewCubePos = function(){
-			$('#cont').css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,'+navHeight+'px,'+distance+')rotate' +direct+ '(' + degNum + ')');
+			//set active category in side of cube
+			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child('+(elemIndex+1)+')').className='ctgSideActive';
+			if(parentButtonActive) return;
+		}
+		else{
+			parentIndex =  $(cBut).index();//index of high level button
+			//set active side by default
+			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child(1)').className='ctgSideActive';
 		}
 
-		// generalFunctionCode
-		if( $('#cont').hasClass('contHidden')){
-
-			$($this).addClass('buttonActive');
-
+		/*define function for cube roration*/
+		setNewCubePos = function(){
+			$(cont3d).css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,'+navHeight+'px,'+distance+')rotate' +direct+ '(' + degNum + ')');
+		}
+		setSmallCube = function(){
+			$(cont3d).css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,-300vh,-600vh) rotate' +direct+ '(' + degNum + ')');
+		}
+		toNHPMove = function(){
 			$('.home').addClass('homeHidden').delay(300).fadeOut();
-			$('#wrap').css('background','rgb(15,89,182)')
-			// $('body').css('overflow','hidden')
-			$('#cont').css('display','block');
+			id('wrap').style.background='rgb(15,89,182)'
+			cont3d.style.display='block';
 			setTimeout(function(){
-				$('#cont').removeClass('contHidden');
+				$(cont3d).removeClass('contHidden').css('transform','translate3d(0,-600vh,-2000vh)');//smallCube
 			},100);
 			setTimeout(function(){
 				setNewCubePos();
-			},1100);//must be 10000
+			},1100);//must be 11000
 		}
-		else if( $($this).hasClass('buttonActive') ){
-			return false;
-		}
-		else{
-			$('.mainNav > div').removeClass('buttonActive');
-			$($this).addClass('buttonActive');
-
-			$('#cont').css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,-300vh,-600vh) rotate' +direct+ '(' + degNum + ')');
-			$('#cont > li').css('box-shadow','inset 0 0 3vh 1vh rgba(40,45,51,1)');
-
+		toHPMove = function(){
+			$(cont3d).addClass('contHidden');
+			id('wrap').style.background = ''
+			$('.home').css('display','block')
 			setTimeout(function(){
-				setNewCubePos();
-			},1000)
+				cont3d.style.display='none';
+				$('.home').removeClass('homeHidden');
+			},700)
 		}
-	},delay)
+
+		/*scroll to top and set delay if that is needed */
+		if( $(document).scrollTop() !== 0 ){
+			delay = 500;scrollTop();
+		}else delay = 0;
+
+		setTimeout(function(){
+			// generalFunctionCode
+			if(cBut.id === 'logo') toHPMove();
+			else if( $('#cont3d').hasClass('contHidden') ) toNHPMove();
+			else{
+				$('#cont3d > li').removeClass('nonShadow');
+
+				setSmallCube();
+
+				setTimeout(function(){
+					setNewCubePos();
+				},1000)
+			}
+		},delay)
+	}
 }
 
-// setFunctionForNavButton
-$('.mainNav >div:nth-child(1)').click(function(){$this=this; clickBar('50%','50%', 0, '','0deg')});
-$('.mainNav >div:nth-child(2)').click(function(){$this = this; clickBar('100%','0%', '-'+height+'', 'Y','90deg')});
-$('.mainNav >div:nth-child(3)').click(function(){$this = this; clickBar('0%','0%', '-'+height+'', 'Y','-90deg')});
-$('.mainNav >div:nth-child(4)').click(function(){$this = this; clickBar('0%','0%', '-'+height+'', 'X','90deg')});
-$('.mainNav >div:nth-child(5)').click(function(){$this = this; clickBar('0%','100%', '-'+height+'', 'X','-90deg')});
-$('.mainNav >div:nth-child(6)').click(function(){$this = this; clickBar('50%','0%', '-'+height+'', 'Y','-180deg')});
-// $('nav > div:nth-child(6)').click();
+var links = [
+	[,'50%','50%', 0, '','0deg'],
+	[,'100%','0%', '-'+height+'', 'Y','90deg'],
+	[,'0%','0%', '-'+height+'', 'Y','-90deg'],
+	[,'0%','0%', '-'+height+'', 'X','90deg'],
+	[,'0%','100%', '-'+height+'', 'X','-90deg'],
+	[,'50%','0%', '-'+height+'', 'Y','-180deg'],
+]
 
-$('#cont > li').mouseover(function(){
-	$(this).css('box-shadow','inset 0 0 1vh 0 rgba(40,45,51,1)');
-})
 
-//navigation for option in menu
-$('.mainNav .ctg > div').click(function(){
-	LGV.menuOptionClicked = true;
-	var elemIndex = $(this).index();
-	var parentIndex = $(this).parent().parent().index();
-	$('#cont li > div').removeClass('sideActive');
-	$('#cont li:eq('+parentIndex+') > div:eq('+elemIndex+')').addClass('sideActive');
-})
-
-$('#cont li > div:nth-child(1)').addClass('sideActive'); //make the first block active by default
-
-$('#logo').click(function(){
-	if( $(document).scrollTop() != 0 ){
-		var delay = 700;
-		scrollTop();
-	}else{
-		delay = 0;
+var updatestate = function(){
+	var hash, cBut,regExp;
+	regExp = /\w+/i;
+	hash =  location.hash.match(regExp);
+	if(location.hash == ''){
+		//to Home Page Move
+		cBut = document.getElementById('logo');
+		clickBar.call('',cBut);
 	}
-	setTimeout(function(){
-		$('.home').css('display','block')
-		$('#cont').addClass('contHidden');
-		$('#cont > li').removeClass('contLiActive')
-		$('nav > div').removeClass('navBlockActive');
-		$('#wrap').css('background','none')
-		setTimeout(function(){
-			$('#cont').css('display','none').css('transform','translate3d(0,-600vh,-2000vh)');
-			$('.home').removeClass('homeHidden');
-		},700)
-	},delay)
+	else{
+		var index;
+		// detect which level button was clicked
+		if(hash == location.hash.slice(1)) {
+			cBut = document.querySelector('#mainNav > div[data-href='+hash+']');
+			index = $(cBut).index();
+		}
+		else{
+			var parentCBut = document.querySelector('#mainNav > div[data-href='+hash+']');
+			cBut = parentCBut.querySelector('.ctg > div[data-href="'+location.hash.slice(1)+'"]');
+			index = $(parentCBut).index();
+		}
+		links[index][0] = cBut;//add clicked Button to needed array
+		clickBar.apply('', links[index]);// launch main function with needed arguments
+	}
+};
+updatestate();
+window.addEventListener('hashchange',updatestate)
+
+navPanel.addEventListener('click',function(e){
+	var hash, cBut,parentIndex,
+		i=0;
+	cBut = e.target;
+	while(!hash){
+		hash = e.path[i].getAttribute('data-href');		
+		i++;
+	}
+	location.hash = hash;
 })
+
+
+$('#cont3d > li').mouseover(function(){
+	$(this).addClass('nonShadow');
+});
+
+
 /*
 ========================================================
 ======				EXPRESS AREA				========
@@ -348,26 +388,9 @@ $(window).scroll( function(){
     animElement( $('#contact .method-communicate > div') );
 
 });
-/*
-========================================================
-======				google maps 				========
-========================================================
-*/
-var map;
-function initialize() {
-	var myLatlng = new google.maps.LatLng(48.9215, 24.715671);
-	var mapOptions = {
-		zoom: 18,
-  		center: myLatlng,
-  		scrollwheel: false
-  	};
- 	var map = new google.maps.Map(document.getElementById('google-map'),mapOptions);
- 	var marker = new google.maps.Marker({
- 		position: myLatlng,
- 		map: map,
- 	});
-}
-google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
 
 /*
 ========================================================
@@ -392,21 +415,44 @@ function(){
 })
 
 
-/*
-========================================================
-======				comment: Google Analytics   ========
-========================================================
-*/
-(function(i,s,o,g,r,a,m){
-	i['GoogleAnalyticsObject']=r;i[r]=i[r] || function(){
-		(i[r].q=i[r].q||[]).push(arguments)
-	},i[r].l=1*new Date();
-	a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];
-	a.async=1;
-	a.src=g;
-	m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+// /*
+// ========================================================
+// ======				google maps 				========
+// ========================================================
+// */
+// var map;
+// function initialize() {
+// 	var myLatlng = new google.maps.LatLng(48.9215, 24.715671);
+// 	var mapOptions = {
+// 		zoom: 16,
+//   		center: myLatlng,
+//   		scrollwheel: false
+//   	};
+//  	var map = new google.maps.Map(document.getElementById('google-map'),mapOptions);
+//  	var marker = new google.maps.Marker({
+//  		position: myLatlng,
+//  		map: map,
+//  		icon: 'img/icon/marker.png'
+//  	});
+// }
+// google.maps.event.addDomListener(window, 'load', initialize);
 
-ga('create', 'UA-62902606-1', 'auto');
-ga('send', 'pageview');
+// /*
+// ========================================================
+// ======				comment: Google Analytics   ========
+// ========================================================
+// */
+// (function(i,s,o,g,r,a,m){
+// 	i['GoogleAnalyticsObject']=r;
+// 	i[r]=i[r] || function(){
+// 		(i[r].q=i[r].q ||[]).push(arguments)
+// 	},i[r].l = 1*new Date();
+// 	a=s.createElement(o),
+// 	m=s.getElementsByTagName(o)[0];
+// 	a.async=1;
+// 	a.src=g;
+// 	m.parentNode.insertBefore(a,m)
+// })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+// ga('create', 'UA-62902606-1', 'auto');
+// ga('send', 'pageview');

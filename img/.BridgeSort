@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<dirinfo>
+<files>
+<item key='about20150331001354' />
+<item key='adminGroup20150331001355' />
+<item key='contact20150331001330' />
+<item key='dsd20150331001358' />
+<item key='history20150331001358' />
+<item key='home20150331001359' />
+<item key='icon20150609233913' />
+<item key='ourPhotos20150331001402' />
+<item key='arrow-only.png20150331001353' />
+<item key='arrow.png20150331001353' />
+<item key='bg-1.JPG20150331001352' />
+<item key='bg-2.jpg20150331001350' />
+<item key='bg-3.jpg20150331001349' />
+<item key='bg-4.JPG20150331001349' />
+<item key='facebook.png20150331001349' />
+<item key='logo.png20150331001349' />
+<item key='quote.png20150331001349' />
+</files>
+<stack version='1' expanded='false' framerate='2.0' framerateCS6='2.0' >
+<files>
+	<item key='facebook.png20150331001349' />
+	<item key='twitter.png20150331001348' />
+	<item key='vk.png20150331001348' />
+</files>
+</stack>
+</dirinfo>
