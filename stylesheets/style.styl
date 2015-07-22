@@ -222,11 +222,11 @@ padding:0 20%;
 
 text-align:center;
 
-background:rgba(10,10,10,.3);
+background:rgba(10,10,10,.2);
 }
 
 .home #header-info h1{
-top:60%;
+top:64%;
 margin:0 auto;
 
 font-family:Open Sans;
@@ -236,24 +236,6 @@ color:rgb(230,235,235);
 border-radius:.5vmin;
 background-color:rgba(10, 40, 99, .502);
 
-text-transform:uppercase;
-}
-.home #header-info .button{
-width:15.5%;
-display:none;
-
-top:52%;
-margin:0 auto;
-padding:.8% 0;
-
-font-size:1.8vh;
-
-color:white;
-border:.3vh solid white;
-border-radius:.5vh;
-
-cursor:pointer;
-transition:all .2s ease-in ;
 text-transform:uppercase;
 }
 .home #header-info .button:hover{
@@ -813,14 +795,15 @@ box-sizing:border-box;
 margin:2% auto 0 auto;
 }
 #third-level-body{
-	width:145%;
+	width:140%;
 	height:100%;
 	display:flex;
-	padding 0 2%
-	absolute top left -15%
-	
+	padding 0 2%;
+	position absolute
+	top 10%
+	left -15%
 }
-blockWidth = 9.7%;
+blockWidth = 10%;
 .block-area .third-level .teach-circle{
 width:blockWidth;
 
@@ -828,7 +811,6 @@ background:rgb(93,151,255);
 }
 .block-area .third-level .teach-circleHover{
 width:blockWidth*1.2;
-debug blockWidth+-@width
 height:120%;
 
 top:-2%;
@@ -1101,8 +1083,8 @@ ul#cont3d{
 
 	opacity:1;
 
-	transition:all .9s cubic-bezier(.785, .135, .15, .86);
-	// transform:translate3d(0,-600vh,-2000vh);
+	transition:all .5s cubic-bezier(.785, .135, .15, .86);
+	// transform:tranlate3d(0,-600vh,-2000vh);
 	transform-style:preserve-3d;
 
 	perspective:50000000px;

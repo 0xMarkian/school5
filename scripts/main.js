@@ -6,73 +6,6 @@
 ========================================================
 */
 (function( $ ){
-	function offset(el){
-		return el.getBoundingClientRect();
-	}
-
-
-	$.fn.makeSlider = function(max_step,active_area){
-		max_step = max_step || 10; //чим крок більший тим швидкість слайдера більша  !!!
-		active_area = active_area || 300; //ширина площі на якій слайдер активний
-
-		$(this).on("mousemove", function(event){define_mouse_pos(event)} );
-		$(this).on("mouseout", function(event){slider_stop(true, event)} );
-		
-		var	$this = $(this).children(),
-			parent_offset=offset($this.parent()[0]),
-			offset_width = ($this.width()-parent_offset.right),
-			cur_left,
-			slider_move,
-			max_step,
-			active_area;
-		function slider_stop(mouseout, e){
-			e = e || window.event;
-
-			if(!mouseout || (mouseout && (e.clientX < parent_offset.left || e.clientY < parent_offset.top || e.clientX > parent_offset.right || e.clientY > parent_offset.bottom))){
-
-				clearInterval(slider_move);
-			}
-		}
-
-
-		function define_mouse_pos(e){
-			clearInterval(slider_move);
-			e = e || window.event;
-
-			var speed,destination,rel_clientX;
-
-			rel_clientX = e.clientX - parent_offset.left;
-			cur_left = parseInt( $this.css('left') ) ;
-			if(rel_clientX < active_area){
-				step = ((active_area-rel_clientX)/active_area)*max_step;
-				destination = '+';
-
-				left_hand = -offset_width;
-				right_hand = -step;
-			}
-			else if(rel_clientX > parent_offset.right-active_area){
-				step = ((active_area-(parent_offset.right-rel_clientX) )/active_area)*max_step;
-				destination = '-';
-
-				left_hand = -offset_width+step;
-				right_hand = 0;
-			}
-			else{
-				slider_stop(false, event);
-				return;
-			}
-			slider_move = setInterval(function(){
-				if(left_hand <= cur_left && cur_left <=right_hand){
-					cur_left = eval(cur_left +destination+ step);
-					$this.css('left',cur_left+"px")
-				}
-				else{
-					clearInterval(slider_move);
-				}
-			},1)
-		}
-	}
-
 	//function addImg
 	$.fn.addImg = function(nameImg,src,onload){
 		var imgObj = {};
@@ -82,6 +15,7 @@
 		imgObj[nameImg].onload = onload;
 	}
 })(jQuery)
+
 function id(id){
 	return document.getElementById(id);
 }
@@ -127,70 +61,49 @@ function scrollTop(speed){
 	speed = speed || 800;
 	$('body,html').animate({scrollTop:0}, speed);
 }
-var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){//cBut -clicked button
+
+/**
+ * [clickBar description]
+ * @param  {object} cBut     clicked button
+ * @param  {string} origin1  [description]
+ * @param  {string} origin2  [description]
+ * @param  {string} distance [description]
+ * @param  {string} direct   [description]
+ * @param  {string} degNum   [description]
+ * @return {[type]}          [description]
+ */
+var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){
+	/*declare function's main variables*/
+	var cube3d, //conteiner for not home page
+		parentIndex,
+		parentEl,
+		parentButtonActive,
+		isCtgLevelButton, //ctg - category
+		delayForScroll; //variables that define delay for scrolling to top if that needed
+
 	if( !$(cBut).hasClass('buttonActive') ){
-		/*declare function global variables*/
-		var cube3d = document.getElementById('cont3d'),
-			delay,parentIndex,
-			setNewCubePos,
-			setSmallCube,
-			toHPMove,toNHPMove,
-			parentButtonActive;//HP - Home Page, NHP - Not Home Pages
-		parentButtonActive = cBut.parentElement.parentElement.className === 'buttonActive' ? true:false;//check whether this side of cube has already selected
+		/*== main move ==*/
+		cube3d = document.getElementById('cont3d')
+		isCtgLevelButton = cBut.parentElement.className === 'ctg';
+		if(isCtgLevelButton){
+			parentEl = cBut.parentElement.parentElement;
+			parentButtonActive = parentEl.className === 'buttonActive' ? true:false;
+			//check whether this side of cube has already selected
+		}
+
 		$('.mainNav-wrap div').removeClass('buttonActive');
 		$('#cont3d li > div').removeClass('ctgSideActive');
-		$(cBut).addClass('buttonActive')
+		cBut.classList.add('buttonActive')
 
+		//section where active category of cube side define
+		if(isCtgLevelButton){
+			//тут повинно бути 2 однакових if так як ключову роль грає порядок виклику
+			setCtgSideActive();
+			if(parentButtonActive) {return};
+		}
+		else setDefaultCtgSideActive();
 
-		/*section where active category of cube side define*/
-		if(cBut.parentElement.className === 'ctg'){
-			var parentEl = cBut.parentElement.parentElement;
-			$(parentEl).addClass('buttonActive');
-			parentIndex = $(parentEl).index();
-			var elemIndex = $(cBut).index();
-
-			//set active category in side of cube
-			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child('+(elemIndex+1)+')').className='ctgSideActive';
-			if(parentButtonActive) return;
-		}
-		else{
-			parentIndex =  $(cBut).index();//index of high level button
-			//set active side by default
-			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child(1)').className='ctgSideActive';
-		}
-
-		/*define function for cube roration*/
-		setNewCubePos = function(){
-			$(cont3d).css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,'+navHeight+'px,'+distance+')rotate' +direct+ '(' + degNum + ')');
-		}
-		setSmallCube = function(){
-			$(cont3d).css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,-300vh,-600vh) rotate' +direct+ '(' + degNum + ')');
-		}
-		toNHPMove = function(){
-			$('.home').addClass('homeHidden').delay(300).fadeOut();
-			id('wrap').style.background='rgb(15,89,182)'
-			cont3d.style.display='block';
-			setTimeout(function(){
-				$(cont3d).removeClass('contHidden').css('transform','translate3d(0,-600vh,-2000vh)');//smallCube
-			},100);
-			setTimeout(function(){
-				setNewCubePos();
-			},1100);//must be 11000
-		}
-		toHPMove = function(){
-			$(cont3d).addClass('contHidden');
-			id('wrap').style.background = ''
-			$('.home').css('display','block')
-			setTimeout(function(){
-				cont3d.style.display='none';
-				$('.home').removeClass('homeHidden');
-			},700)
-		}
-
-		/*scroll to top and set delay if that is needed */
-		if( $(document).scrollTop() !== 0 ){
-			delay = 500;scrollTop();
-		}else delay = 0;
+		scrollTopIfNeedAndSetDelay();
 
 		setTimeout(function(){
 			// generalFunctionCode
@@ -203,12 +116,62 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){//cBut -cli
 
 				setTimeout(function(){
 					setNewCubePos();
-				},1000)
+				},700)
 			}
-		},delay)
-	}
-}
+		},delayForScroll)
+		
+		
+		/*set active category on cube's side*/
+		function setCtgSideActive(){//set active category on cube's side
+			$(parentEl).addClass('buttonActive');
+			parentIndex = $(parentEl).index();
+			var elemIndex = $(cBut).index();
+	
+			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child('+(elemIndex+1)+')').className='ctgSideActive';
+		}
+		function setDefaultCtgSideActive(){
+			parentIndex =  $(cBut).index();//index of high level button
+			//set active side by default
+			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child(1)').className='ctgSideActive';
+		}
 
+		/*scrolling and delay*/
+		function scrollTopIfNeedAndSetDelay(){
+			if( $(document).scrollTop() > 30 ){
+				delayForScroll = 500;scrollTop();
+			}else delayForScroll = 0;
+		}
+
+		/*define function for cube rotation*/
+		function setNewCubePos(){
+			$(cont3d).css('transform-origin',origin1 + origin2).css('transform','translate3d(0,'+navHeight+'px,'+distance+')rotate' +direct+ '(' + degNum + ')');
+		}
+		function setSmallCube(){
+			$(cont3d).css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,-300vh,-600vh) rotate' +direct+ '(' + degNum + ')');
+		}
+		function toNHPMove(){//NHP - Not Home Pages 
+			$('.home').addClass('homeHidden').delay(300).fadeOut();
+			id('wrap').style.background='rgb(15,89,182)'
+			cont3d.style.display='block';
+			setTimeout(function(){
+				$(cont3d).removeClass('contHidden').css('transform','translate3d(0,-600vh,-2000vh)');//smallCube
+			},100);
+			setTimeout(function(){
+				setNewCubePos();
+			},1100);//must be 11000
+		}
+		
+		function toHPMove(){//HP - Home Page
+			$(cont3d).addClass('contHidden');
+			id('wrap').style.background = ''
+			$('.home').css('display','block')
+			setTimeout(function(){
+				cont3d.style.display='none';
+				$('.home').removeClass('homeHidden');
+			},700)
+		}
+	}
+};
 var links = [
 	[,'50%','50%', 0, '','0deg'],
 	[,'100%','0%', '-'+height+'', 'Y','90deg'],
@@ -216,8 +179,7 @@ var links = [
 	[,'0%','0%', '-'+height+'', 'X','90deg'],
 	[,'0%','100%', '-'+height+'', 'X','-90deg'],
 	[,'50%','0%', '-'+height+'', 'Y','-180deg'],
-]
-
+];
 
 var updatestate = function(){
 	var hash, cBut,regExp;
@@ -244,7 +206,7 @@ var updatestate = function(){
 		clickBar.apply('', links[index]);// launch main function with needed arguments
 	}
 };
-updatestate();
+// updatestate();
 window.addEventListener('hashchange',updatestate)
 
 navPanel.addEventListener('click',function(e){
@@ -363,7 +325,9 @@ function(){
 	$this = this; block3dMouseOut('teach-circle','teach-circleHover')
 })
 
-$('#teach .third-level').wrapInner('<div id="third-level-body"></div>').makeSlider();
+$('#teach .third-level').wrapInner('<div id="third-level-body"></div>')
+document.querySelector('#teach .third-level').makeSlider()
+
 
 /*
 ========================================================
@@ -421,22 +385,22 @@ function(){
 // ======				google maps 				========
 // ========================================================
 // */
-// var map;
-// function initialize() {
-// 	var myLatlng = new google.maps.LatLng(48.9215, 24.715671);
-// 	var mapOptions = {
-// 		zoom: 16,
-//   		center: myLatlng,
-//   		scrollwheel: false
-//   	};
-//  	var map = new google.maps.Map(document.getElementById('google-map'),mapOptions);
-//  	var marker = new google.maps.Marker({
-//  		position: myLatlng,
-//  		map: map,
-//  		icon: 'img/icon/marker.png'
-//  	});
-// }
-// google.maps.event.addDomListener(window, 'load', initialize);
+var map;
+function initialize() {
+	var myLatlng = new google.maps.LatLng(48.9215, 24.715671);
+	var mapOptions = {
+		zoom: 16,
+  		center: myLatlng,
+  		scrollwheel: false
+  	};
+ 	var map = new google.maps.Map(document.getElementById('google-map'),mapOptions);
+ 	var marker = new google.maps.Marker({
+ 		position: myLatlng,
+ 		map: map,
+ 		icon: 'img/icon/marker.png'
+ 	});
+}
+google.maps.event.addDomListener(window, 'load', initialize);
 
 // /*
 // ========================================================
@@ -457,3 +421,4 @@ function(){
 
 // ga('create', 'UA-62902606-1', 'auto');
 // ga('send', 'pageview');
+// 

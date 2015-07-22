@@ -5,7 +5,7 @@
 
 	<link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" sizes="16x16">
 	<!-- <link rel="canonical" href="http://webraincoder.github.io/school5/" /> -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
 	<link href="stylesheets/media-queries.css" rel="stylesheet" type="text/css">
 	<link href="https://plus.google.com/u/0/b/103744706350765439303/" rel="publisher">
 
@@ -16,7 +16,8 @@
 	<meta name="keywords" content="Школа №5 Івано-Франківськ, спеціалізована школа №5, СШ №5, DSD-школа м. Івано-Франківська">
 	<meta name=viewport content="width=device-width, initial-scale=1">
 </head>
-<body onorientationchange="setSize()" onresize="setSize()" itemscope itemtype="http://schema.org/School">
+<body onresize="setSize()" itemscope itemtype="http://schema.org/School">
+<!-- onorientationchange="setSize()" -->
 	<div id="nav-panel">
 		<div class="mainNav-wrap">
 			<div id="logo" data-href=" ">
@@ -25,7 +26,7 @@
 				<div id="home">На Головну</div>
 			</div>
 			<nav id="mainNav">
-				<div id="achivement" data-href="achivement" class="abc">
+				<div id="achivement" data-href="achivement">
 					<div class="name">Наші досягнення</div>
 					<div class="ctg">
 						<a href="https://drive.google.com/file/d/0B_eNVN7qQ_QtSGdxRXJrZ0FzZmc/view?usp=sharing" class="custom">Олімпіади</a>
@@ -73,8 +74,7 @@
 			<header>
 				<img class="dynamic-img" src="img/bg-3.jpg" alt="Кращі учні школи №5 Івано-Фрнаківськ (the best school5 pupils)" itemprop="image">
 				<div id="header-info">
-					<h1><strong>Найкраща освіта для кожного</strong></h1>
-					<div class="button">Дізнатися більше про нас</div>
+					<h1>Найкраща освіта для кожного</h1>
 				</div>
 			</header>
 			<div id="main">
@@ -650,9 +650,10 @@
 			</li>
 		</ul>
 	</div>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;signed_in=true"></script>
+	<script src="scripts/jquery-2.1.3.min.js"></script>
 	<!-- // <script src="js/gremlins.min.js"></script> -->
-	<script src="js/script.js"></script>
+	<script src="scripts/slider.js"></script>
+	<script src="scripts/main.js"></script>
 </body>
 </html>
