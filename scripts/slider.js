@@ -26,7 +26,6 @@
       sliderMoveInterval = null;
       curSliderBodyLeft = null;
       sliderOutArea = sliderWrap.clientWidth - sliderBody.clientWidth;
-      console.log(sliderBody);
       sliderMove = function(e) {
         var destination, maxLeft, minLeft, sliderRelativeClientX, step;
         e || (e = window.event);

@@ -1,5 +1,4 @@
-'use strict';
-
+// 'use strict';
 /*
 ========================================================
 ======				comment: my plygins		========
@@ -82,51 +81,14 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){
 		delayForScroll; //variables that define delay for scrolling to top if that needed
 
 	if( !$(cBut).hasClass('buttonActive') ){
-		/*== main move ==*/
-		cube3d = document.getElementById('cont3d')
-		isCtgLevelButton = cBut.parentElement.className === 'ctg';
-		if(isCtgLevelButton){
-			parentEl = cBut.parentElement.parentElement;
-			parentButtonActive = parentEl.className === 'buttonActive' ? true:false;
-			//check whether this side of cube has already selected
-		}
 
-		$('.mainNav-wrap div').removeClass('buttonActive');
-		$('#cont3d li > div').removeClass('ctgSideActive');
-		cBut.classList.add('buttonActive')
 
-		//section where active category of cube side define
-		if(isCtgLevelButton){
-			//тут повинно бути 2 однакових if так як ключову роль грає порядок виклику
-			setCtgSideActive();
-			if(parentButtonActive) {return};
-		}
-		else setDefaultCtgSideActive();
-
-		scrollTopIfNeedAndSetDelay();
-
-		setTimeout(function(){
-			// generalFunctionCode
-			if(cBut.id === 'logo') toHPMove();
-			else if( $('#cont3d').hasClass('contHidden') ) toNHPMove();
-			else{
-				$('#cont3d > li').removeClass('nonShadow');
-
-				setSmallCube();
-
-				setTimeout(function(){
-					setNewCubePos();
-				},700)
-			}
-		},delayForScroll)
-		
-		
 		/*set active category on cube's side*/
 		function setCtgSideActive(){//set active category on cube's side
 			$(parentEl).addClass('buttonActive');
 			parentIndex = $(parentEl).index();
 			var elemIndex = $(cBut).index();
-	
+		
 			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child('+(elemIndex+1)+')').className='ctgSideActive';
 		}
 		function setDefaultCtgSideActive(){
@@ -170,6 +132,44 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){
 				$('.home').removeClass('homeHidden');
 			},700)
 		}
+
+		/*== main move ==*/
+		cube3d = document.getElementById('cont3d')
+		isCtgLevelButton = cBut.parentElement.className === 'ctg';
+		if(isCtgLevelButton){
+			parentEl = cBut.parentElement.parentElement;
+			parentButtonActive = parentEl.className === 'buttonActive' ? true:false;
+			//check whether this side of cube has already selected
+		}
+
+		$('.mainNav-wrap div').removeClass('buttonActive');
+		$('#cont3d li > div').removeClass('ctgSideActive');
+		cBut.classList.add('buttonActive')
+
+		//section where active category of cube side define
+		if(isCtgLevelButton){
+			//тут повинно бути 2 однакових if так як ключову роль грає порядок виклику
+			setCtgSideActive();
+			if(parentButtonActive) {return};
+		}
+		else setDefaultCtgSideActive();
+
+		scrollTopIfNeedAndSetDelay();
+
+		setTimeout(function(){
+			// generalFunctionCode
+			if(cBut.id === 'logo') toHPMove();
+			else if( $('#cont3d').hasClass('contHidden') ) toNHPMove();
+			else{
+				$('#cont3d > li').removeClass('nonShadow');
+
+				setSmallCube();
+
+				setTimeout(function(){
+					setNewCubePos();
+				},700)
+			}
+		},delayForScroll)
 	}
 };
 var links = [
@@ -181,14 +181,15 @@ var links = [
 	[,'50%','0%', '-'+height+'', 'Y','-180deg'],
 ];
 
-var updatestate = function(){
+var updatestate = function(needScroll){
 	var hash, cBut,regExp;
 	regExp = /\w+/i;
 	hash =  location.hash.match(regExp);
-	if(location.hash == ''){
+	if(location.hash === '' || location.hash === '# '){
 		//to Home Page Move
+		if(!needScroll) return
 		cBut = document.getElementById('logo');
-		clickBar.call('',cBut);
+		clickBar(cBut);
 	}
 	else{
 		var index;
@@ -206,16 +207,17 @@ var updatestate = function(){
 		clickBar.apply('', links[index]);// launch main function with needed arguments
 	}
 };
-// updatestate();
+updatestate(false);
 window.addEventListener('hashchange',updatestate)
 
+
 navPanel.addEventListener('click',function(e){
-	var hash, cBut,parentIndex,
-		i=0;
+	e = e || window.event;
+	var hash, cBut,parentIndex;
 	cBut = e.target;
-	while(!hash){
-		hash = e.path[i].getAttribute('data-href');		
-		i++;
+	while(cBut !== document.body && !hash){
+		hash = cBut.getAttribute('data-href');		
+		cBut = cBut.parentNode;
 	}
 	location.hash = hash;
 })
@@ -385,22 +387,22 @@ function(){
 // ======				google maps 				========
 // ========================================================
 // */
-var map;
-function initialize() {
-	var myLatlng = new google.maps.LatLng(48.9215, 24.715671);
-	var mapOptions = {
-		zoom: 16,
-  		center: myLatlng,
-  		scrollwheel: false
-  	};
- 	var map = new google.maps.Map(document.getElementById('google-map'),mapOptions);
- 	var marker = new google.maps.Marker({
- 		position: myLatlng,
- 		map: map,
- 		icon: 'img/icon/marker.png'
- 	});
-}
-google.maps.event.addDomListener(window, 'load', initialize);
+// var map;
+// function initialize() {
+// 	var myLatlng = new google.maps.LatLng(48.9215, 24.715671);
+// 	var mapOptions = {
+// 		zoom: 16,
+//   		center: myLatlng,
+//   		scrollwheel: false
+//   	};
+//  	var map = new google.maps.Map(document.getElementById('google-map'),mapOptions);
+//  	var marker = new google.maps.Marker({
+//  		position: myLatlng,
+//  		map: map,
+//  		icon: 'img/icon/marker.png'
+//  	});
+// }
+// google.maps.event.addDomListener(window, 'load', initialize);
 
 // /*
 // ========================================================

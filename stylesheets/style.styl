@@ -1,4 +1,3 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
 *{
 	position:relative;
 	margin:0;
@@ -10,12 +9,16 @@ a{
 	display:block;
 }
 @font-face{
+	font-family:"Open Sans";
+	src:url(../fonts/OpenSans.ttf);
+}
+@font-face{
 	font-family:MuseoSansCyrl;
-	src:url(fonts/MuseoSansCyrl.otf);
+	src:url(../fonts/MuseoSansCyrl.otf);
 }
 @font-face{
 	font-family:RobotoRegular;
-	src:url(fonts/Roboto-Regular.ttf);
+	src:url(../fonts/Roboto-Regular.ttf);
 }
 ::-webkit-scrollbar{
 	display:none;
@@ -24,7 +27,7 @@ body,html
 	height 100%
 	width 100%
 body
-	font-family:'MuseoSansCyrl',Arial;
+	font-family:MuseoSansCyrl, Arial;
 	background:url('') no-repeat;
 	background-attachment:fixed;
 	-webkit-font-smoothing: antialiased;
@@ -44,7 +47,7 @@ body
 	position:fixed;
 	z-index:2;
 
-	font-family:RobotoRegular,Arial;
+	font-family:RobotoRegular;
 
 	perspective:2000px;
 	&:hover .mainNav-wrap{
@@ -52,7 +55,7 @@ body
 	}
 	.mainNav-wrap{
 		background:rgb(92,139,231);
-		box-shadow:0 0 2vh 0 black;
+		box-shadow:0 0 .8vmax 0 black;
 		transition: all .2s ease;
 		transform-origin:0 0;
 		width:100%;
@@ -110,14 +113,14 @@ body
 				text-align: center;
 				padding-top:.5%;
 				color:rgb(250,250,250);
-				border:.2vh solid transparent;
-				border-radius:.9vh;
+				border:.1vmax solid transparent;
+				border-radius:.4vmax;
 
 				cursor:pointer;
 				transition:all .2s ease-in;
 				text-transform:uppercase;
 				&:hover{
-					border:.2vh solid white;
+					border:.1vmax solid white;
 					background:rgb(92,139,231);
 					height:400%;
 				}
@@ -169,7 +172,7 @@ body
 				}
 			}
 			.buttonActive{
-			border:.2vh solid white;
+			border:.1vmax solid white;
 			}
 		}
 	}
@@ -229,7 +232,7 @@ background:rgba(10,10,10,.2);
 top:64%;
 margin:0 auto;
 
-font-family:Open Sans;
+font-family:"Open Sans";
 font-size:3.2vmax;
 
 color:rgb(230,235,235);
@@ -237,10 +240,6 @@ border-radius:.5vmin;
 background-color:rgba(10, 40, 99, .502);
 
 text-transform:uppercase;
-}
-.home #header-info .button:hover{
-color:black;
-background:white;
 }
 #main{
 width:85%;
@@ -250,7 +249,7 @@ position:relative;
 z-index:10;
 margin:3.5% auto 0 auto;
 
-font-family:Open Sans;
+font-family:"Open Sans";
 text-align:center;
 
 color:rgb(45,45,45);
@@ -258,10 +257,11 @@ color:rgb(45,45,45);
 #main > h1:nth-child(1){
 font-size:2.5vmax;
 font-weight:bold;
+font-weight 500
 }
 #main > h3:nth-child(2){
 margin:1vmax 0 0 0;
-
+font-weight 400 
 font-size:1.3vmax;
 }
 /*==========================ourWay===============================*/
@@ -392,8 +392,8 @@ text-align:center;
 
 opacity:0;
 color:white;
-border-top:.3vh solid white;
-border-radius:.5vh;
+border-top:.14vmax solid white;
+border-radius:.2vmax;
 
 transition:all .3s ease-in, opacity .05s ease-in;
 }
@@ -417,7 +417,7 @@ display:block;
 position:absolute;
 z-index:-1;
 
-border:.2vh solid rgb(0,87,235);
+border:.1vmax solid rgb(0,87,235);
 }
 #ourWay .line-1{
 top:25%;
@@ -505,12 +505,12 @@ transform:none;
 .expres-forward{
 opacity:0;
 
-transform:translate(15vh,-3vh) rotate(5deg);
+transform:translate(7vmax,-1.3vmax) rotate(5deg);
 }
 .expres-back{
 opacity:0;
 
-transform:translate(-10vh,0) rotate(.5deg);
+transform:translate(-4vmax,0) rotate(.5deg);
 }
 
 #abus-expres h2{
@@ -552,8 +552,8 @@ height:13.5%;
 position:absolute;
 top:78%;
 
-border-radius:5vh;
-background:url(img/arrow.png) no-repeat center center;
+border-radius:2vmax;
+background:url(../../img/arrow.png) no-repeat center center;
 background-size:100%;
 
 cursor:pointer;
@@ -570,7 +570,7 @@ left:51.3%;
 transform:rotate(-1deg);
 }
 #abus-expres .arrow:hover{
-background:url(img/arrow-only.png) no-repeat center center rgb(0,107,255);
+background:url(../../img/arrow-only.png) no-repeat center center rgb(0,107,255);
 background-size:85%;
 }
 #teach{
@@ -639,9 +639,9 @@ height:100%;
 top:0;
 left:0;
 
-border-radius:50vh;
+border-radius:24vmax;
 background:rgb(78,136,254);
-box-shadow:0 0 2vh 0vh black;
+box-shadow:0 0 1vmax 0 black;
 
 cursor:pointer;
 transition:all .5s .2s cubic-bezier(.38,-0.14,.38,1.89);
@@ -723,11 +723,12 @@ overflow:hidden;
 top:5%;
 left:5%;
 box-sizing:border-box;
+box-shadow 0 0 0 .7vmax rgb(78,136,254)
 
-border:.5vh solid rgba(245,245,245,.95);
+border:.2vmax solid rgba(245,245,245,.95);
 border-radius:50vh;
 
-transform:translate3d(0,0,.5vh);
+transform:translate3d(0,0,.2vmax);
 transform-style:preserve-3d;
 }
 .block-area .name{
@@ -759,10 +760,10 @@ padding:0 4%;
 font-size:1vmax;
 
 color:white;
-border-radius:20vh;
+border-radius:9vmax;
 background:rgb(35,52,83);
 
-transform:translate3d(0,0,-1vh) rotateY(-180deg);
+transform:translate3d(0,0,-.5vmax) rotateY(-180deg);
 transform-style:preserve-3d;
 
 align-items:center;
@@ -783,7 +784,7 @@ margin:0 auto;
 background:rgb(69,127,231);
 }
 .block-area .first-level .teach-circle .front-side{
-border:.5vh solid rgba(230,230,230,.9);
+border:.2vmax solid rgba(230,230,230,.9);
 }
 /*=================third-level special styles=================*/
 .block-area .third-level{
@@ -849,7 +850,7 @@ float:left;
 
 margin-right:blockWidth+-.5;
 
-border:.2vh solid rgb(0,87,235);
+border:.1vmax solid rgb(0,87,235);
 background:rgb(244,198,5);
 }
 #teach .third-level .lines-1{
@@ -960,7 +961,7 @@ color:rgba(70,70,70,.9);
 width:100%;
 height:51%;
 
-box-shadow:0 -.6vh 1vh 0 rgba(100,100,200,.5);
+box-shadow:0 -.3vmax 1vh 0 rgba(100,100,200,.5);
 }
 #contact #google-map iframe{
 width:100%;
@@ -1056,7 +1057,7 @@ top:20%;
 right:8%;
 
 border-radius:20vh;
-background:url(img/arrow.png);
+background:url(../../img/arrow.png);
 background-size:cover;
 
 cursor:pointer;
@@ -1064,7 +1065,7 @@ transition:all .3s ease-in;
 transform:rotate(-90deg);
 }
 footer #arrow:hover{
-background:url(img/arrow-only.png) rgb(30,30,30);
+background:url(../../img/arrow-only.png) rgb(30,30,30);
 background-size:100%;
 }
 /*
@@ -1181,7 +1182,7 @@ text-align:center;
 #about-main .text-description h1{
 margin:5% 0 2% 0;
 
-font-size:3max;
+font-size:3vmax;
 font-weight:bolder;
 
 color:rgb(76,76,81);
@@ -1435,7 +1436,7 @@ transform:translate3d(0,0,0);
 transform-style:preserve-3d;
 }
 .rating .table .best-pupil:nth-child(5) .front-side{
-background:url(img/about/rating/5.jpg);
+background:url(../../img/about/rating/5.jpg);
 }
 .rating .table .best-pupil .backside{
 width:100%;
@@ -1518,8 +1519,7 @@ background:rgba(0,0,0,.1);
 			.main-text{
 				top:28%;
 				font-size:1vmax;
-				font-family:'Open Sans',inherit;
-				font-weight:1;
+				font-family:"Open Sans";
 			}
 		}
 	}
@@ -1547,11 +1547,11 @@ background:rgba(0,0,0,.1);
 				background-size:cover !important;
 			}
 			&:nth-child(1) .photo{
-				background:url(img/adminGroup/director.jpg);
+				background:url(../img/adminGroup/director.jpg);
 			}
 			for i in 2 .. 5{
 				&:nth-child( {i} ) .photo{
-					background:url('img/adminGroup/deputy-'i+-1'.jpg');
+					background:url('../img/adminGroup/deputy-'i+-1'.jpg');
 				}
 			}
 			.discription{
@@ -1575,7 +1575,7 @@ background:rgba(0,0,0,.1);
 ========================================================
 */
 #cont3d > li > #history-main{
-	background url(img/history/bg.png) no-repeat center bottom
+	background url(../img/history/bg.png) no-repeat center bottom
 	background-color:rgba(225,225,225,.45)
 	height 190%
 	.historyStep-wrap{

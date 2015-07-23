@@ -15,7 +15,6 @@ do ()->
 
 		#sliderOutArea -  width of area out of slider wrap, return negative value as sliderBody has bigger with that sliderWrap
 		sliderOutArea = sliderWrap.clientWidth - sliderBody.clientWidth
-		console.log(sliderBody);
 
 		sliderMove = (e) ->
 			e ||= window.event

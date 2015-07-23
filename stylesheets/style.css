@@ -1,4 +1,3 @@
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300");
 * {
   position: relative;
   margin: 0;
@@ -10,12 +9,16 @@ a {
   display: block;
 }
 @font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans.ttf");
+}
+@font-face {
   font-family: MuseoSansCyrl;
-  src: url("fonts/MuseoSansCyrl.otf");
+  src: url("../fonts/MuseoSansCyrl.otf");
 }
 @font-face {
   font-family: RobotoRegular;
-  src: url("fonts/Roboto-Regular.ttf");
+  src: url("../fonts/Roboto-Regular.ttf");
 }
 ::-webkit-scrollbar {
   display: none;
@@ -26,7 +29,7 @@ html {
   width: 100%;
 }
 body {
-  font-family: 'MuseoSansCyrl', Arial;
+  font-family: MuseoSansCyrl, Arial;
   background: url("") no-repeat;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
@@ -46,22 +49,17 @@ body .hideText {
   height: 10%;
   position: fixed;
   z-index: 2;
-  font-family: RobotoRegular, Arial;
-  -webkit-perspective: 2000px;
-          perspective: 2000px;
+  font-family: RobotoRegular;
+  perspective: 2000px;
 }
 #nav-panel:hover .mainNav-wrap {
-  -webkit-transform: rotateX(25deg);
-          transform: rotateX(25deg);
+  transform: rotateX(25deg);
 }
 #nav-panel .mainNav-wrap {
   background: #5c8be7;
-  box-shadow: 0 0 2vh 0 #000;
-  -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease;
-  -webkit-transform-origin: 0 0;
-      -ms-transform-origin: 0 0;
-          transform-origin: 0 0;
+  box-shadow: 0 0 0.8vmax 0 #000;
+  transition: all 0.2s ease;
+  transform-origin: 0 0;
   width: 100%;
   height: 100%;
 }
@@ -96,13 +94,8 @@ body .hideText {
 #nav-panel .mainNav-wrap nav {
   width: 75%;
   height: 60%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  justify-content: space-around;
   top: 25%;
   left: 25%;
 }
@@ -114,15 +107,14 @@ body .hideText {
   text-align: center;
   padding-top: 0.5%;
   color: #fafafa;
-  border: 0.2vh solid transparent;
-  border-radius: 0.9vh;
+  border: 0.1vmax solid transparent;
+  border-radius: 0.4vmax;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-          transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
   text-transform: uppercase;
 }
 #nav-panel .mainNav-wrap nav > div:hover {
-  border: 0.2vh solid #fff;
+  border: 0.1vmax solid #fff;
   background: #5c8be7;
   height: 400%;
 }
@@ -141,60 +133,45 @@ body .hideText {
   font-size: 1vmax;
 }
 #nav-panel .mainNav-wrap nav > div:hover .name {
-  -webkit-transform: scale(0.7, 0.5);
-      -ms-transform: scale(0.7, 0.5);
-          transform: scale(0.7, 0.5);
+  transform: scale(0.7, 0.5);
 }
 #nav-panel .mainNav-wrap nav > div:hover .ctg {
-  -webkit-transform: scale(1) translateY(1vmax);
-      -ms-transform: scale(1) translateY(1vmax);
-          transform: scale(1) translateY(1vmax);
+  transform: scale(1) translateY(1vmax);
 }
 #nav-panel .mainNav-wrap nav > div:hover .ctg >* {
   padding: 6% 0;
 }
 #nav-panel .mainNav-wrap nav > div .name {
   margin-top: 4%;
-  -webkit-transition: all 0.4s linear;
-          transition: all 0.4s linear;
+  transition: all 0.4s linear;
   font-size: inherit;
 }
 #nav-panel .mainNav-wrap nav > div #news-name {
-  -webkit-transform: none !important;
-      -ms-transform: none !important;
-          transform: none !important;
+  transform: none !important;
 }
 #nav-panel .mainNav-wrap nav > div .ctg {
-  -webkit-transform: scale(1, 0.01);
-      -ms-transform: scale(1, 0.01);
-          transform: scale(1, 0.01);
-  -webkit-transform-origin: 0 0;
-      -ms-transform-origin: 0 0;
-          transform-origin: 0 0;
+  transform: scale(1, 0.01);
+  transform-origin: 0 0;
   text-align: center;
   font-size: 1vmax;
-  -webkit-transition: all 0.4s ease;
-          transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 #nav-panel .mainNav-wrap nav > div .ctg >*:hover {
   background: #fff;
   color: #323232;
-  -webkit-transition: all 0.3s linear;
-          transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 #nav-panel .mainNav-wrap nav .buttonActive {
-  border: 0.2vh solid #fff;
+  border: 0.1vmax solid #fff;
 }
 #wrap {
   width: 100%;
   height: 200%;
   position: static;
-  -webkit-perspective: 500px;
-          perspective: 500px;
+  perspective: 500px;
 }
 #wrap .page {
-  -webkit-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 /*
 ========================================================
@@ -208,8 +185,7 @@ body .hideText {
 }
 .homeHidden {
   opacity: 0;
-  -webkit-transform: translate3d(0, 0, -1000px);
-          transform: translate3d(0, 0, -1000px);
+  transform: translate3d(0, 0, -1000px);
 }
 .home header {
   width: 100%;
@@ -233,16 +209,12 @@ body .hideText {
 .home #header-info h1 {
   top: 64%;
   margin: 0 auto;
-  font-family: Open Sans;
+  font-family: "Open Sans";
   font-size: 3.2vmax;
   color: #e6ebeb;
   border-radius: 0.5vmin;
   background-color: rgba(10,40,99,0.502);
   text-transform: uppercase;
-}
-.home #header-info .button:hover {
-  color: #000;
-  background: #fff;
 }
 #main {
   width: 85%;
@@ -250,16 +222,18 @@ body .hideText {
   position: relative;
   z-index: 10;
   margin: 3.5% auto 0 auto;
-  font-family: Open Sans;
+  font-family: "Open Sans";
   text-align: center;
   color: #2d2d2d;
 }
 #main > h1:nth-child(1) {
   font-size: 2.5vmax;
   font-weight: bold;
+  font-weight: 500;
 }
 #main > h3:nth-child(2) {
   margin: 1vmax 0 0 0;
+  font-weight: 400;
   font-size: 1.3vmax;
 }
 /*==========================ourWay===============================*/
@@ -287,8 +261,7 @@ body .hideText {
   background: #4e89ff;
   box-shadow: 0 0 3vmin -0.5vmin #000;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 #ourWay div:hover {
   width: 25%;
@@ -330,8 +303,7 @@ body .hideText {
   height: 50%;
   left: -1%;
   margin: 10% 0 2% 0;
-  -webkit-transition: all 0.3s ease;
-          transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 #ourWay > div:hover img {
   height: 24%;
@@ -353,17 +325,12 @@ body .hideText {
   left: 5%;
   color: transparent;
   text-shadow: 0 0 10px rgba(0,0,0,0.5);
-  -webkit-transition: -webkit-transform 0.7s ease-in, text-shadow 0.6s ease-out;
-          transition: transform 0.7s ease-in, text-shadow 0.6s ease-out;
-  -webkit-transform: translate(0, 2.5vmax);
-      -ms-transform: translate(0, 2.5vmax);
-          transform: translate(0, 2.5vmax);
+  transition: transform 0.7s ease-in, text-shadow 0.6s ease-out;
+  transform: translate(0, 2.5vmax);
 }
 #ourWay > div:hover p:nth-child(3) {
   text-shadow: 0 0 0 #fff;
-  -webkit-transform: translate(0, 0.2vmax);
-      -ms-transform: translate(0, 0.2vmax);
-          transform: translate(0, 0.2vmax);
+  transform: translate(0, 0.2vmax);
 }
 #ourWay .button {
   height: 20%;
@@ -376,15 +343,13 @@ body .hideText {
   text-align: center;
   opacity: 0;
   color: #fff;
-  border-top: 0.3vh solid #fff;
-  border-radius: 0.5vh;
-  -webkit-transition: all 0.3s ease-in, opacity 0.05s ease-in;
-          transition: all 0.3s ease-in, opacity 0.05s ease-in;
+  border-top: 0.14vmax solid #fff;
+  border-radius: 0.2vmax;
+  transition: all 0.3s ease-in, opacity 0.05s ease-in;
 }
 #ourWay > div:hover .button {
   opacity: 1;
-  -webkit-transition: all 0.3s ease-in, opacity 0.4s ease-in 0.4s;
-          transition: all 0.3s ease-in, opacity 0.4s ease-in 0.4s;
+  transition: all 0.3s ease-in, opacity 0.4s ease-in 0.4s;
 }
 #ourWay .button:hover {
   color: #281e1e;
@@ -398,19 +363,15 @@ body .hideText {
   display: block;
   position: absolute;
   z-index: -1;
-  border: 0.2vh solid #0057eb;
+  border: 0.1vmax solid #0057eb;
 }
 #ourWay .line-1 {
   top: 25%;
-  -webkit-transform: rotate(58deg);
-      -ms-transform: rotate(58deg);
-          transform: rotate(58deg);
+  transform: rotate(58deg);
 }
 #ourWay .line-2 {
   top: 25%;
-  -webkit-transform: rotate(-65deg);
-      -ms-transform: rotate(-65deg);
-          transform: rotate(-65deg);
+  transform: rotate(-65deg);
 }
 #ourWay #line1 {
   left: 18.1%;
@@ -468,25 +429,18 @@ body .hideText {
   position: absolute;
   top: 2%;
   left: 0;
-  -webkit-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 #abus-expres .expres-active {
-  -webkit-transform: none;
-      -ms-transform: none;
-          transform: none;
+  transform: none;
 }
 .expres-forward {
   opacity: 0;
-  -webkit-transform: translate(15vh, -3vh) rotate(5deg);
-      -ms-transform: translate(15vh, -3vh) rotate(5deg);
-          transform: translate(15vh, -3vh) rotate(5deg);
+  transform: translate(7vmax, -1.3vmax) rotate(5deg);
 }
 .expres-back {
   opacity: 0;
-  -webkit-transform: translate(-10vh, 0) rotate(0.5deg);
-      -ms-transform: translate(-10vh, 0) rotate(0.5deg);
-          transform: translate(-10vh, 0) rotate(0.5deg);
+  transform: translate(-4vmax, 0) rotate(0.5deg);
 }
 #abus-expres h2 {
   margin: 2% 0 1% 0;
@@ -505,43 +459,34 @@ body .hideText {
 .expres-left {
   visibility: hidden;
   opacity: 0;
-  -webkit-transform: translateX(-150px) rotate(20deg);
-      -ms-transform: translateX(-150px) rotate(20deg);
-          transform: translateX(-150px) rotate(20deg);
+  transform: translateX(-150px) rotate(20deg);
 }
 .expres-right {
   visibility: hidden;
   opacity: 0;
-  -webkit-transform: translateX(150px);
-      -ms-transform: translateX(150px);
-          transform: translateX(150px);
+  transform: translateX(150px);
 }
 #abus-expres .arrow {
   width: 2.8%;
   height: 13.5%;
   position: absolute;
   top: 78%;
-  border-radius: 5vh;
-  background: url("img/arrow.png") no-repeat center center;
+  border-radius: 2vmax;
+  background: url("../../img/arrow.png") no-repeat center center;
   background-size: 100%;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-          transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 #abus-expres #prev-arrow {
   left: 46.7%;
-  -webkit-transform: rotate(-180deg);
-      -ms-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 #abus-expres #next-arrow {
   left: 51.3%;
-  -webkit-transform: rotate(-1deg);
-      -ms-transform: rotate(-1deg);
-          transform: rotate(-1deg);
+  transform: rotate(-1deg);
 }
 #abus-expres .arrow:hover {
-  background: url("img/arrow-only.png") no-repeat center center #006bff;
+  background: url("../../img/arrow-only.png") no-repeat center center #006bff;
   background-size: 85%;
 }
 #teach {
@@ -585,43 +530,32 @@ body .hideText {
 .block-area > div {
   width: 100%;
   height: 35.5%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin: 0.5% auto 1% auto;
-  -webkit-transition: all 0.5s ease-in;
-          transition: all 0.5s ease-in;
-  -webkit-perspective: 5200px;
-          perspective: 5200px;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  transition: all 0.5s ease-in;
+  perspective: 5200px;
+  justify-content: space-around;
 }
 .block-area .teach-circle {
   width: 14%;
   height: 100%;
   top: 0;
   left: 0;
-  border-radius: 50vh;
+  border-radius: 24vmax;
   background: #4e88fe;
-  box-shadow: 0 0 2vh 0vh #000;
+  box-shadow: 0 0 1vmax 0 #000;
   cursor: pointer;
-  -webkit-transition: all 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89);
-          transition: all 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transition: all 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89);
+  transform-style: preserve-3d;
 }
 .block-area .teach-circleHover {
-  -webkit-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
   width: 18%;
   height: 129.5%;
   top: -20%;
   left: 2%;
   margin-left: -4%;
-  -webkit-transform: rotateY(180deg) !important;
-          transform: rotateY(180deg) !important;
+  transform: rotateY(180deg) !important;
 }
 /*line styles===================*/
 #line-block {
@@ -636,45 +570,35 @@ body .hideText {
   height: 1%;
   position: absolute;
   background: rgba(150,150,150,0.15);
-  -webkit-transition: all 0.2s ease-in;
-          transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 #line-block .lineHover {
   background: rgba(30,30,30,0.5);
-  -webkit-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 #line-block #line-1 {
   width: 40%;
   top: 40%;
   left: 10%;
-  -webkit-transform: rotate(-23deg);
-      -ms-transform: rotate(-23deg);
-          transform: rotate(-23deg);
+  transform: rotate(-23deg);
 }
 #line-block #line-2 {
   width: 20%;
   top: 40%;
   left: 35%;
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 #line-block #line-3 {
   width: 20%;
   top: 40%;
   right: 35%;
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 #line-block #line-4 {
   width: 40%;
   top: 40%;
   right: 10%;
-  -webkit-transform: rotate(23deg);
-      -ms-transform: rotate(23deg);
-          transform: rotate(23deg);
+  transform: rotate(23deg);
 }
 /*style block && text inside*/
 .teach-circle .front-side {
@@ -684,12 +608,11 @@ body .hideText {
   top: 5%;
   left: 5%;
   box-sizing: border-box;
-  border: 0.5vh solid rgba(245,245,245,0.95);
+  box-shadow: 0 0 0 0.7vmax #4e88fe;
+  border: 0.2vmax solid rgba(245,245,245,0.95);
   border-radius: 50vh;
-  -webkit-transform: translate3d(0, 0, 0.5vh);
-          transform: translate3d(0, 0, 0.5vh);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0.2vmax);
+  transform-style: preserve-3d;
 }
 .block-area .name {
   width: 100%;
@@ -706,9 +629,6 @@ body .hideText {
 .block-area .teach-circle .backside {
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   position: absolute;
   top: 0;
@@ -717,20 +637,12 @@ body .hideText {
   padding: 0 4%;
   font-size: 1vmax;
   color: #fff;
-  border-radius: 20vh;
+  border-radius: 9vmax;
   background: #233453;
-  -webkit-transform: translate3d(0, 0, -1vh) rotateY(-180deg);
-          transform: translate3d(0, 0, -1vh) rotateY(-180deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  transform: translate3d(0, 0, -0.5vmax) rotateY(-180deg);
+  transform-style: preserve-3d;
+  align-items: center;
+  justify-content: center;
 }
 .block-area #title {
   margin: 5% auto 0 auto;
@@ -744,14 +656,13 @@ body .hideText {
   background: #457fe7;
 }
 .block-area .first-level .teach-circle .front-side {
-  border: 0.5vh solid rgba(230,230,230,0.9);
+  border: 0.2vmax solid rgba(230,230,230,0.9);
 }
 /*=================third-level special styles=================*/
 .block-area .third-level {
   height: 35%;
   width: 100%;
-  -webkit-transition: all 1s linear;
-          transition: all 1s linear;
+  transition: all 1s linear;
   left: 0%;
   box-sizing: border-box;
   margin: 2% auto 0 auto;
@@ -759,9 +670,6 @@ body .hideText {
 #third-level-body {
   width: 140%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   padding: 0 2%;
   position: absolute;
@@ -778,8 +686,7 @@ body .hideText {
   top: -2%;
   margin-left: -2%;
   left: 1%;
-  -webkit-transform: rotateY(180deg) !important;
-          transform: rotateY(180deg) !important;
+  transform: rotateY(180deg) !important;
 }
 .block-area .third-level .teach-circle:nth-child(odd) {
   top: 60%;
@@ -805,18 +712,14 @@ body .hideText {
   height: 110%;
   float: left;
   margin-right: 9.5%;
-  border: 0.2vh solid #0057eb;
+  border: 0.1vmax solid #0057eb;
   background: #f4c605;
 }
 #teach .third-level .lines-1 {
-  -webkit-transform: rotate(58deg);
-      -ms-transform: rotate(58deg);
-          transform: rotate(58deg);
+  transform: rotate(58deg);
 }
 #teach .third-level .lines-2 {
-  -webkit-transform: rotate(-55deg);
-      -ms-transform: rotate(-55deg);
-          transform: rotate(-55deg);
+  transform: rotate(-55deg);
 }
 /*
 ========================================================
@@ -872,25 +775,18 @@ body .hideText {
 #contact .method-communicate {
   width: 70%;
   height: 50%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin: 2% auto 0 auto;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  justify-content: space-around;
 }
 #contact .method-communicate > div {
   width: 33%;
   height: 100%;
   background: rgba(240,240,240,0.15);
-  -webkit-transition: -webkit-transform 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89), opacity 0.2s 0.2s;
-          transition: transform 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89), opacity 0.2s 0.2s;
+  transition: transform 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89), opacity 0.2s 0.2s;
 }
 #contact .method-communicate > div:nth-child(2) {
-  -webkit-transition: -webkit-transform 0.5s 0.4s cubic-bezier(0.38, -0.14, 0.38, 1.89), opacity 0.2s 0.4s;
-          transition: transform 0.5s 0.4s cubic-bezier(0.38, -0.14, 0.38, 1.89), opacity 0.2s 0.4s;
+  transition: transform 0.5s 0.4s cubic-bezier(0.38, -0.14, 0.38, 1.89), opacity 0.2s 0.4s;
 }
 #contact .method-communicate > div h2 {
   margin: 5% 0 4% 0;
@@ -905,7 +801,7 @@ body .hideText {
 #contact #google-map {
   width: 100%;
   height: 51%;
-  box-shadow: 0 -0.6vh 1vh 0 rgba(100,100,200,0.5);
+  box-shadow: 0 -0.3vmax 1vh 0 rgba(100,100,200,0.5);
 }
 #contact #google-map iframe {
   width: 100%;
@@ -953,8 +849,7 @@ footer .contact-info .common img {
   margin-right: 2%;
   border-radius: 15vh;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-          transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 footer .contact-info .common img:hover {
   background-color: #496d97;
@@ -977,17 +872,14 @@ footer #arrow {
   top: 20%;
   right: 8%;
   border-radius: 20vh;
-  background: url("img/arrow.png");
+  background: url("../../img/arrow.png");
   background-size: cover;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
-  -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transition: all 0.3s ease-in;
+  transform: rotate(-90deg);
 }
 footer #arrow:hover {
-  background: url("img/arrow-only.png") #1e1e1e;
+  background: url("../../img/arrow-only.png") #1e1e1e;
   background-size: 100%;
 }
 /*
@@ -1003,12 +895,9 @@ ul#cont3d {
   top: 0;
   left: 0;
   opacity: 1;
-  -webkit-transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-          transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 50000000px;
-          perspective: 50000000px;
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transform-style: preserve-3d;
+  perspective: 50000000px;
 }
 ul#cont3d li {
   width: 100%;
@@ -1021,73 +910,51 @@ ul#cont3d li {
   background: #fff !important;
   box-shadow: inset 0 0 3vh 1vh #282d33;
   list-style: none;
-  -webkit-transition: all 0.3s ease;
-          transition: all 0.3s ease;
-  -webkit-perspective: 900px;
-          perspective: 900px;
+  transition: all 0.3s ease;
+  perspective: 900px;
 }
 ul#cont3d li > div {
   width: 100%;
   height: 100%;
-  -webkit-transition: all 0.4s ease-in;
-          transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transform: scale(0.1);
-      -ms-transform: scale(0.1);
-          transform: scale(0.1);
+  transform: scale(0.1);
   opacity: 0;
 }
 ul#cont3d li > div.ctgSideActive {
-  -webkit-transform: scale(1) !important;
-      -ms-transform: scale(1) !important;
-          transform: scale(1) !important;
+  transform: scale(1) !important;
   z-index: 4 !important;
   opacity: 1 !important;
 }
 ul#cont3d li.left {
   left: -100%;
-  -webkit-transform: rotateY(-90deg);
-          transform: rotateY(-90deg);
-  -webkit-transform-origin: 100% 50%;
-      -ms-transform-origin: 100% 50%;
-          transform-origin: 100% 50%;
+  transform: rotateY(-90deg);
+  transform-origin: 100% 50%;
 }
 ul#cont3d li.right {
   left: 100%;
-  -webkit-transform: rotateY(90deg);
-          transform: rotateY(90deg);
-  -webkit-transform-origin: 0 50%;
-      -ms-transform-origin: 0 50%;
-          transform-origin: 0 50%;
+  transform: rotateY(90deg);
+  transform-origin: 0 50%;
 }
 ul#cont3d li.top {
-  -webkit-transform: rotateX(-90deg);
-          transform: rotateX(-90deg);
-  -webkit-transform-origin: 50% 0;
-      -ms-transform-origin: 50% 0;
-          transform-origin: 50% 0;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
 }
 ul#cont3d li.bottom {
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-  -webkit-transform-origin: 50% 100%;
-      -ms-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
+  transform: rotateX(90deg);
+  transform-origin: 50% 100%;
 }
 ul#cont3d li.under {
-  -webkit-transform-origin: 50% 50%;
-      -ms-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
 }
 ul#cont3d .nonShadow {
   box-shadow: inset 0 0 1vh 0 #282d33;
 }
 .contHidden {
   opacity: 0 !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-          transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
 }
 /*=====================================================*/
 /*
@@ -1108,7 +975,7 @@ ul#cont3d .nonShadow {
 }
 #about-main .text-description h1 {
   margin: 5% 0 2% 0;
-  font-size: 3 max;
+  font-size: 3vmax;
   font-weight: bolder;
   color: #4c4c51;
 }
@@ -1120,9 +987,6 @@ ul#cont3d .nonShadow {
 #about-main .wrap-img {
   width: 100%;
   height: 23%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
   box-shadow: 0 0 3vh 1vh rgba(190,192,192,0.8);
@@ -1162,9 +1026,6 @@ ul#cont3d .nonShadow {
 #about-main nav {
   width: 70%;
   height: 5%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
   text-align: center;
@@ -1172,9 +1033,6 @@ ul#cont3d .nonShadow {
 #about-main nav > div {
   width: 19%;
   height: 80%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin: auto;
   padding: 0.2% 1%;
@@ -1183,16 +1041,9 @@ ul#cont3d .nonShadow {
   border-radius: 1.5vh;
   background: #5c8be7;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-          transition: all 0.2s ease-in;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  transition: all 0.2s ease-in;
+  justify-content: center;
+  align-items: center;
 }
 #about-main nav > div:hover {
   color: #fff;
@@ -1272,25 +1123,14 @@ ul#cont3d .nonShadow {
 #about-main .rating .table {
   width: 70%;
   height: 80%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin: 2.5% auto 2% auto;
   background: #fff;
   counter-reset: item;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-perspective: 3000px;
-          perspective: 3000px;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-wrap: wrap;
+  perspective: 3000px;
+  justify-content: space-around;
+  align-items: center;
 }
 .rating .table .best-pupil {
   width: 15%;
@@ -1298,12 +1138,9 @@ ul#cont3d .nonShadow {
   top: 0;
   left: 0;
   cursor: pointer;
-  -webkit-transition: all 0.35s ease-in;
-          transition: all 0.35s ease-in;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 900px;
-          perspective: 900px;
+  transition: all 0.35s ease-in;
+  transform-style: preserve-3d;
+  perspective: 900px;
 }
 .rating .table .best-pupilHover {
   width: 22%;
@@ -1313,8 +1150,7 @@ ul#cont3d .nonShadow {
   left: 3.5%;
   margin-top: -8%;
   margin-left: -7%;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 .rating .table .best-pupil:after {
   width: 11%;
@@ -1330,8 +1166,7 @@ ul#cont3d .nonShadow {
   background: #006bff;
   content: counter(item) ' ';
   counter-increment: item;
-  -webkit-transform: translate3d(0, 0, 0.1vh);
-          transform: translate3d(0, 0, 0.1vh);
+  transform: translate3d(0, 0, 0.1vh);
 }
 .rating .table .best-pupil .front-side {
   width: 100%;
@@ -1343,13 +1178,11 @@ ul#cont3d .nonShadow {
   border: 0.5vh solid rgba(31,40,51,0.5);
   background: #1f2833;
   background-size: cover !important;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
 }
 .rating .table .best-pupil:nth-child(5) .front-side {
-  background: url("img/about/rating/5.jpg");
+  background: url("../../img/about/rating/5.jpg");
 }
 .rating .table .best-pupil .backside {
   width: 100%;
@@ -1359,10 +1192,8 @@ ul#cont3d .nonShadow {
   left: 0;
   text-align: center;
   background: #006bff;
-  -webkit-transform: translate3d(0, 0, -0.1vh) rotateY(180deg);
-          transform: translate3d(0, 0, -0.1vh) rotateY(180deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform: translate3d(0, 0, -0.1vh) rotateY(180deg);
+  transform-style: preserve-3d;
 }
 .rating .table .best-pupil .name {
   margin: 4% 0 2% 0;
@@ -1418,8 +1249,7 @@ ul#cont3d .nonShadow {
 }
 #news-wrap .newsList-wrap .news-item h1.title a {
   width: auto;
-  -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease;
+  transition: all 0.2s ease;
   color: rgba(18,65,157,0.8);
 }
 #news-wrap .newsList-wrap .news-item h1.title a:hover {
@@ -1429,8 +1259,7 @@ ul#cont3d .nonShadow {
 #news-wrap .newsList-wrap .news-item .main-text {
   top: 28%;
   font-size: 1vmax;
-  font-family: 'Open Sans', inherit;
-  font-weight: 1;
+  font-family: "Open Sans";
 }
 /*
 ========================================================
@@ -1455,19 +1284,19 @@ ul#cont3d .nonShadow {
   background-size: cover !important;
 }
 #adminGroup-wrap .adminMem-wrap .adminMem:nth-child(1) .photo {
-  background: url("img/adminGroup/director.jpg");
+  background: url("../img/adminGroup/director.jpg");
 }
 #adminGroup-wrap .adminMem-wrap .adminMem:nth-child(2 ) .photo {
-  background: url("img/adminGroup/deputy-1.jpg");
+  background: url("../img/adminGroup/deputy-1.jpg");
 }
 #adminGroup-wrap .adminMem-wrap .adminMem:nth-child(3 ) .photo {
-  background: url("img/adminGroup/deputy-2.jpg");
+  background: url("../img/adminGroup/deputy-2.jpg");
 }
 #adminGroup-wrap .adminMem-wrap .adminMem:nth-child(4 ) .photo {
-  background: url("img/adminGroup/deputy-3.jpg");
+  background: url("../img/adminGroup/deputy-3.jpg");
 }
 #adminGroup-wrap .adminMem-wrap .adminMem:nth-child(5 ) .photo {
-  background: url("img/adminGroup/deputy-4.jpg");
+  background: url("../img/adminGroup/deputy-4.jpg");
 }
 #adminGroup-wrap .adminMem-wrap .adminMem .discription {
   float: left;
@@ -1487,7 +1316,7 @@ ul#cont3d .nonShadow {
 ========================================================
 */
 #cont3d > li > #history-main {
-  background: url("img/history/bg.png") no-repeat center bottom;
+  background: url("../img/history/bg.png") no-repeat center bottom;
   background-color: rgba(225,225,225,0.45);
   height: 190%;
 }
@@ -1524,8 +1353,7 @@ ul#cont3d .nonShadow {
   line-height: 150%;
   box-sizing: border-box;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease;
-          transition: all 0.5s ease;
+  transition: all 0.5s ease;
   font-size: 1.5vmax;
 }
 #cont3d > li > #history-main .historyStep-wrap .yearStep:hover {
