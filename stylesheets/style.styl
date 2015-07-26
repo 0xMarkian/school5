@@ -1,13 +1,11 @@
-*{
-	position:relative;
-	margin:0;
-	padding:0;
-}
-a{
-	text-decoration: none;
-	color:inherit;
-	display:block;
-}
+*
+	position relative
+	margin 0
+	padding 0
+a
+	text-decoration none
+	color inherit
+	display block
 @font-face{
 	font-family:"Open Sans";
 	src:url(../fonts/OpenSans.ttf);
@@ -553,7 +551,7 @@ position:absolute;
 top:78%;
 
 border-radius:2vmax;
-background:url(../../img/arrow.png) no-repeat center center;
+background:url(../img/arrow.png) no-repeat center center;
 background-size:100%;
 
 cursor:pointer;
@@ -570,295 +568,263 @@ left:51.3%;
 transform:rotate(-1deg);
 }
 #abus-expres .arrow:hover{
-background:url(../../img/arrow-only.png) no-repeat center center rgb(0,107,255);
+background:url(../img/arrow-only.png) no-repeat center center rgb(0,107,255);
 background-size:85%;
 }
-#teach{
-width:100%;
-height:225%;
 
-z-index:2;
-overflow hidden
-}
-#teach .dynamic-image{
-width:100%;
-height:25%;
+/*
+========================================================
+======	comment: Out teach-collective area		========
+========================================================
+*/
+#teach
+	width 100%
+	height 230%
 
-background:rgba(60,125,255,.9);
-box-shadow:inset 0 -6vmax 0 0 rgb(255,206,0);
-}
-#teach .teach-inner{
-width:100%;
-height:75%;
+	z-index 2
+	overflow hidden
+	background:rgb(242,246,249);
+	h2
+		font-size:2.3vmax;
 
-text-align:center;
+		color:rgb(58,58,58);
+	h3
+		margin:2% 0 0 0;
 
-background:rgb(242,246,249);
-}
-#teach .text-area{
-width:100%;
+		font-size:1.4vmax;
+		font-weight:normal;
+		color:rgb(129,144,159);
+	.dynamic-image
+		width 100%
+		height 25%		
 
-box-sizing:border-box;
-padding:2% 20%;
-}
-#teach h2{
-font-size:2.3vmax;
+		background rgba(60,125,255,.9)
+		box-shadow inset 0 -6vmax 0 0 rgb(255,206,0)
+	.teach-inner
+		width:100%;
+		height:75%;
 
-color:rgb(58,58,58);
-}
-#teach h3{
-margin:2% 0 0 0;
+		text-align:center;
 
-font-size:1.4vmax;
-font-weight:normal;
+		background:rgb(242,246,249);
+		.text-area
+			width:100%;
 
-color:rgb(129,144,159);
-}
-.block-area{
-width:100%;
-height:51%;
+			box-sizing:border-box;
+			padding:2% 20%;
+		.block-area
+			width:100%;
+			height:51%;
 
-margin:0;
-}
-.block-area > div{
-width:100%;
-height:35.5%;
-display:flex;
+			margin:0;
+			>div
+				width:100%;
+				height:35.5%;
+				display:flex;
 
-margin:.5% auto 1% auto;
+				margin:.5% auto 1% auto;
 
-transition:all .5s ease-in;
+				transition:all .5s ease-in;
 
-perspective:5200px;
-justify-content:space-around;
-}
-.block-area .teach-circle{
-width:14%;
-height:100%;
+				perspective:5200px;
+				justify-content:space-around;
+				.line-block
+					width:100%;
+					height:120%;
 
-top:0;
-left:0;
+					position:absolute;
+					z-index:-1;
+					top:50%;
+					left:0;
+					.line
+						height:1%;
 
-border-radius:24vmax;
-background:rgb(78,136,254);
-box-shadow:0 0 1vmax 0 black;
+						position:absolute;
 
-cursor:pointer;
-transition:all .5s .2s cubic-bezier(.38,-0.14,.38,1.89);
-transform-style:preserve-3d;
-}
-.block-area .teach-circleHover{
-transition:all .3s ease-in;
-width:18%;
-height:129.5%;
+						background:rgba(150,150,150,.15);
 
-top:-20%;
-left:2%;
-margin-left:-4%;
-transform:rotateY(180deg) !important;
-}
-/*line styles===================*/
-#line-block{
-width:100%;
-height:120%;
+						transition:all .2s ease-in;
+						&.lineHover
+							background:rgba(30,30,30,.5);
 
-position:absolute;
-z-index:-1;
-top:50%;
-left:0;
-}
-#line-block .line{
-height:1%;
+							transition:all .3s ease-in;
+					#line-1
+						width:40%;
 
-position:absolute;
+						top:40%;
+						left:10%;
 
-background:rgba(150,150,150,.15);
+						transform:rotate(-23deg);
+					#line-2
+						width:20%;
 
-transition:all .2s ease-in;
-}
-#line-block .lineHover{
-background:rgba(30,30,30,.5);
+						top:40%;
+						left:35%;
 
-transition:all .3s ease-in;
-}
-#line-block #line-1{
-width:40%;
+						transform:rotate(-45deg);
+					#line-3
+						width:20%;
 
-top:40%;
-left:10%;
+						top:40%;
+						right:35%;
 
-transform:rotate(-23deg);
-}
-#line-block #line-2{
-width:20%;
+						transform:rotate(45deg);
+					#line-4
+						width:40%;
 
-top:40%;
-left:35%;
+						top:40%;
+						right:10%;
 
-transform:rotate(-45deg);
-}
-#line-block #line-3{
-width:20%;
+						transform:rotate(23deg);
+				.teach-circle
+					width:14%;
+					height:100%;
 
-top:40%;
-right:35%;
+					top:0;
+					left:0;
 
-transform:rotate(45deg);
-}
-#line-block #line-4{
-width:40%;
+					border-radius:24vmax;
+					background:rgb(78,136,254);
+					box-shadow:0 0 1vmax 0 black;
 
-top:40%;
-right:10%;
+					cursor:pointer;
+					transition:all .5s .2s cubic-bezier(.38,-0.14,.38,1.89);
+					transform-style:preserve-3d;
+					&.teach-circleHover
+						transition:all .3s ease-in;
+						width:18%;
+						height:129.5%;
 
-transform:rotate(23deg);
-}
+						top:-20%;
+						left:2%;
+						margin-left:-4%;
+						transform:rotateY(180deg) !important;
+					img
+						width 100%
+					.front-side
+						width:90%;
+						height:90%;
+						overflow:hidden;
 
-/*style block && text inside*/
-.teach-circle .front-side{
-width:90%;
-height:90%;
-overflow:hidden;
+						top:5%;
+						left:5%;
+						box-sizing:border-box;
+						box-shadow 0 0 0 .7vmax rgb(78,136,254)
 
-top:5%;
-left:5%;
-box-sizing:border-box;
-box-shadow 0 0 0 .7vmax rgb(78,136,254)
+						border:.2vmax solid rgba(245,245,245,.95);
+						border-radius:50vh;
 
-border:.2vmax solid rgba(245,245,245,.95);
-border-radius:50vh;
+						transform:translate3d(0,0,.2vmax);
+						transform-style:preserve-3d;
+						.name
+							width:100%;
 
-transform:translate3d(0,0,.2vmax);
-transform-style:preserve-3d;
-}
-.block-area .name{
-width:100%;
+							position:absolute;
+							bottom:3%;
 
-position:absolute;
-bottom:3%;
+							font-family:Arial;
+							font-size:.9vmax;
 
-font-family:Arial;
-font-size:.9vmax;
+							color:rgba(30,30,30,.8);
+							background:rgba(255,255,255,.8);
+					.backside
+						width:100%;
+						height:100%;
+						display:flex;
 
-color:rgba(30,30,30,.8);
-background:rgba(255,255,255,.8);
-}
-.teach-circle img{
-width:100%;
-}
-.block-area .teach-circle .backside{
-width:100%;
-height:100%;
-display:flex;
+						position:absolute;
+						top:0;
+						left:0;
+						box-sizing:border-box;
+						padding:0 4%;
 
-position:absolute;
-top:0;
-left:0;
-box-sizing:border-box;
-padding:0 4%;
+						font-size:1vmax;
 
-font-size:1vmax;
+						color:white;
+						border-radius:9vmax;
+						background:rgb(35,52,83);
 
-color:white;
-border-radius:9vmax;
-background:rgb(35,52,83);
+						transform:translate3d(0,0,-.5vmax) rotateY(-180deg);
+						transform-style:preserve-3d;
 
-transform:translate3d(0,0,-.5vmax) rotateY(-180deg);
-transform-style:preserve-3d;
+						align-items:center;
+						justify-content:center;
+				&.first-level
+					.teach-circle
+						margin:0 auto;
 
-align-items:center;
-justify-content:center;
-}
-.block-area #title{
-margin:5% auto 0 auto;
+						background:rgb(69,127,231);
+						.front-side
+							border:.2vmax solid rgba(230,230,230,.9);
+				&.third-level
+					height:34%;
+					width:100%;
+					transition: all 1s linear;
+					left:0%;
+					box-sizing:border-box;
+					margin:5% auto 0 auto;
+					font-size:2.5vmax;
+					text-align:center;
 
-font-size:2.5vmax;
-text-align:center;
+					color:rgba(30,30,30,.9);
+					
+					#third-level-body
+						width:140%;
+						height:100%;
+						display:flex;
+						padding 0 2%;
+						position absolute
+						top 40%
+						left -15%
+					blockWidth = 10%;
+					.teach-circle
+						width:blockWidth;
 
-color:rgba(30,30,30,.9);
-}
-/*============first-level============*/
-.block-area .first-level .teach-circle{
-margin:0 auto;
+						background:rgb(93,151,255);
+						&:nth-child(odd)
+							top 60%
+						&.teach-circleHover
+							width:blockWidth*1.2;
+							height:120%;
 
-background:rgb(69,127,231);
-}
-.block-area .first-level .teach-circle .front-side{
-border:.2vmax solid rgba(230,230,230,.9);
-}
-/*=================third-level special styles=================*/
-.block-area .third-level{
-height:35%;
-width:100%;
-transition: all 1s linear;
-left:0%;
-box-sizing:border-box;
-margin:2% auto 0 auto;
-}
-#third-level-body{
-	width:140%;
-	height:100%;
-	display:flex;
-	padding 0 2%;
-	position absolute
-	top 10%
-	left -15%
-}
-blockWidth = 10%;
-.block-area .third-level .teach-circle{
-width:blockWidth;
+							top:-2%;
+							margin-left:blockWidth+-@width;
+							left:-(@margin-left/2);
 
-background:rgb(93,151,255);
-}
-.block-area .third-level .teach-circleHover{
-width:blockWidth*1.2;
-height:120%;
+							transform:rotateY(180deg) !important;
+						&:nth-child(odd).teach-circleHover
+							top 58%
+						.name
+							width:100%;
 
-top:-2%;
-margin-left:blockWidth+-@width;
-left:-(@margin-left/2);
+							bottom:8%;
+							padding:1% 0;
 
-transform:rotateY(180deg) !important;
-}
-.block-area .third-level .teach-circle:nth-child(odd){
-top:60%;
-}
-.block-area .third-level .name{
-width:100%;
+							font-size:.82vmax;
+					.line-block
+						width:100%;
+						height:120%;
 
-bottom:8%;
-padding:1% 0;
+						position:absolute;
+						z-index:-1;
+						top:40%;
+						left:10%;
 
-font-size:.82vmax;
-}
-/*================lines block=========================*/
-#teach .third-level .lines{
-width:100%;
-height:120%;
+						background:none;
+						>div
+							width:.2%;
+							height:110%;
+							float:left;
 
-position:absolute;
-z-index:-1;
-top:14%;
-left:10%;
+							margin-right:blockWidth+-.5;
 
-background:none;
-}
-#teach .third-level .lines > div{
-width:.2%;
-height:110%;
-float:left;
-
-margin-right:blockWidth+-.5;
-
-border:.1vmax solid rgb(0,87,235);
-background:rgb(244,198,5);
-}
-#teach .third-level .lines-1{
-transform:rotate(58deg);
-}
-#teach .third-level .lines-2{
-transform:rotate(-55deg);
-}
+							border:.1vmax solid rgb(0,87,235);
+							background:rgb(244,198,5);
+							&:nth-child(odd)
+								transform:rotate(58deg);
+							&:nth-child(even)
+								transform:rotate(-55deg);
+							
 /*
 ========================================================
 ======                comment: QUOTES        ========
@@ -1057,7 +1023,7 @@ top:20%;
 right:8%;
 
 border-radius:20vh;
-background:url(../../img/arrow.png);
+background:url(../img/arrow.png);
 background-size:cover;
 
 cursor:pointer;
@@ -1065,9 +1031,12 @@ transition:all .3s ease-in;
 transform:rotate(-90deg);
 }
 footer #arrow:hover{
-background:url(../../img/arrow-only.png) rgb(30,30,30);
+background:url(../img/arrow-only.png) rgb(30,30,30);
 background-size:100%;
 }
+
+
+
 /*
 ========================================================
 ======              container of page           ========
@@ -1089,7 +1058,7 @@ ul#cont3d{
 	transform-style:preserve-3d;
 
 	perspective:50000000px;
-	li{
+	>li{
 		width:100%;
 		height:100%;
 		overflow:auto;
@@ -1158,312 +1127,6 @@ opacity:0 !important;
 transform:translate3d(0,0,0) !important;
 }
 
-/*=====================================================*/
-
-/*
-========================================================
-======              About Us Page               ========
-========================================================
-*/
-
-/*======================================================*/
-#about-main{
-width:100%;
-height:100%;
-}
-#about-main .text-description{
-width:80%;
-height:15%;
-
-margin:0 auto;
-
-text-align:center;
-}
-#about-main .text-description h1{
-margin:5% 0 2% 0;
-
-font-size:3vmax;
-font-weight:bolder;
-
-color:rgb(76,76,81);
-}
-#about-main .text-description p{
-font-size:1.4vmax;
-line-height:130%;
-
-color:rgb(30,30,30);
-}
-#about-main .wrap-img{
-width:100%;
-height:23%;
-display:flex;
-overflow:hidden;
-
-box-shadow:0 0 3vh 1vh rgba(190,192,192,.8);
-}
-#about-main .wrap-img:after{
-width:100%;
-height:100%;
-
-position:absolute;
-top:0;
-left:0;
-
-background:rgba(0,0,0,.1);
-
-content:'';
-}
-#about-main .dynamic-img{
-width:33%;
-height:98%;
-overflow:hidden;
-
-box-sizing:border-box;
-margin:auto;
-
-border:.5vh solid white;
-}
-#about-main .dynamic-img img{
-height:100%;
-
-box-sizing:border-box;
-}
-/*
-========================================================
-======                about-category            ========
-========================================================
-*/
-#about-main .wrap-about-category{
-width:100%;
-height:80%;
-
-margin-top:5%;
-}
-/*======================navigation*/
-#about-main nav{
-width:70%;
-height:5%;
-display:flex;
-
-margin:0 auto;
-
-text-align:center;
-}
-#about-main nav > div{
-width:19%;
-height:80%;
-display:flex;
-
-margin:auto;
-padding:.2% 1%;
-
-font-size:1.2vmax;
-
-color:rgb(26,41,79);
-border-radius:1.5vh;
-background:rgb(92,139,231);
-
-cursor:pointer;
-transition:all .2s ease-in;
-
-justify-content:center;
-align-items:center;
-}
-#about-main nav > div:hover{
-color:white;
-background:rgba(0,107,255,1);
-box-shadow:0 0 .5vmax 0 rgba(0,107,255,1);
-}
-
-/*=================the block side =================*/
-#about-main .about-category{
-width:100%;
-height:100%;
-
-margin:3% 0 5% 0;
-}
-#about-main .about-category > div{
-width:100%;
-height:100%;
-display:none;
-
-position:absolute;
-top:0;
-left:0;
-box-sizing:border-box;
-padding:4% 0;
-
-color:white;
-background:rgba(31,40,51,1);
-}
-#about-main .about-category > div:nth-child(1){
-display:block;
-}
-#about-main .about-category .title{
-font-size:2vmax;
-text-align:center;
-}
-
-/*
-========================================================
-======                comment: SELF-GOVERNMENT  ========
-========================================================
-*/
-#about-main .about-category > .self-government{
-height:130%;
-}
-.self-government #epigraph{
-width:25%;
-
-position:absolute;
-top:5%;
-right:3%;
-
-font-size:1vmax;
-}
-.self-government #epigraph .autor{
-text-align:right;
-}
-.self-government .table{
-width:70%;
-height:80%;
-
-margin:7% auto;
-}
-.self-government .table .main-govern{
-width:30%;
-
-margin:2% auto;
-padding:1% 4%;
-
-font-size:1.3vmax;
-text-align:center;
-
-border-radius:3vmax;
-background:rgb(92,139,231);
-}
-.self-government .table .name{
-margin-top:1%;
-
-font-size:1.1vmax;
-
-color:rgb(252,204,2);
-}
-/*
-========================================================
-======                comment: RATING block     ========
-========================================================
-*/
-#about-main .about-category > div.rating{
-height:130%;
-}
-#about-main .rating .table{
-width:70%;
-height:80%;
-display:flex;
-
-margin:2.5% auto 2% auto;
-
-background:white;
-
-counter-reset:item;
-
-flex-wrap:wrap;
-perspective:3000px;
-justify-content:space-around;
-align-items:center;
-}
-.rating .table .best-pupil{
-width:15%;
-height:15%;
-
-top:0;
-left:0;
-
-cursor:pointer;
-transition:all .35s ease-in;
-transform-style:preserve-3d;
-
-perspective:900px;
-}
-.rating .table .best-pupilHover{
-width:22%;
-height:22%;
-
-z-index:10;
-top:4.5%;
-left:3.5%;
-margin-top:-8%;
-margin-left:-7%;
-
-transform:rotateY(180deg);
-}
-.rating .table .best-pupil:after{
-width:11%;
-min-width:20px;
-height:11%;
-
-position:absolute;
-position:absolute;
-right:-4%;
-bottom:-4%;
-padding:.5vmin;
-
-text-align:center;
-
-border-radius:10vh;
-background:rgb(0,107,255);
-
-content:counter(item) ' ';
-counter-increment:item;
-transform:translate3d(0,0,.1vh);
-}
-
-.rating .table .best-pupil .front-side{
-width:100%;
-height:100%;
-
-position:absolute;
-top:0;
-left:0;
-box-sizing:border-box;
-
-border:.5vh solid rgba(31,40,51,.5);
-background:rgb(31,40,51);
-background-size:cover !important;
-
-transform:translate3d(0,0,0);
-transform-style:preserve-3d;
-}
-.rating .table .best-pupil:nth-child(5) .front-side{
-background:url(../../img/about/rating/5.jpg);
-}
-.rating .table .best-pupil .backside{
-width:100%;
-height:100%;
-
-position:absolute;
-top:0;
-left:0;
-
-text-align:center;
-
-background:rgb(0,107,255);
-
-transform:translate3d(0,0,-.1vh) rotateY(180deg);
-transform-style:preserve-3d;
-}
-.rating .table .best-pupil .name{
-margin:4% 0 2% 0;
-
-font-size:1.5vmax;
-}
-.rating .table .best-pupil .description{
-font-size:2.3vh;
-}
-.ghost{
-background:rgba(0,0,0,.1);
-}
 /*
 ========================================================
 ======				comment: Page News			========
@@ -1571,11 +1234,51 @@ background:rgba(0,0,0,.1);
 }
 /*
 ========================================================
+======			comment: Page Learn Program		========
+========================================================
+*/
+#cont3d #educationAct-wrap
+	width 100%
+	height 130%
+	padding 0 10%
+	box-sizing border-box
+	h2
+		text-align center
+		margin 5% 0 3% 0
+	>div
+		float left
+		width 40%
+		height 100%
+		margin 0 0 0 10%
+		&.text-area
+			>ul
+				margin 0 0 5% 0
+				h4
+					font-size 1.6vmax
+					color rgb(92,139,231)
+					margin 0 0 2% 0
+				p
+					font-size 1.3vmax
+				
+		&.infograph-area
+			img
+				width 100%
+			div
+				width 30%
+				font-size 1.2vmax
+				top -16.5%
+				left 15%
+				margin 0 0 9.5% 0
+				color white
+	
+
+/*
+========================================================
 ======				comment: Page History		========
 ========================================================
 */
-#cont3d > li > #history-main{
-	background url(../img/history/bg.png) no-repeat center bottom
+#cont3d #history-wrap{
+	background url(../img/about/history/bg.png) no-repeat center bottom
 	background-color:rgba(225,225,225,.45)
 	height 190%
 	.historyStep-wrap{

@@ -1,7 +1,3 @@
-HTMLElement::addEventListener = (event,handler) ->
-	EventTarget::addEventListener.call(this, event, handler)
-	this
-
 do ()-> 
 	getOffset = (el) ->
 		el.getBoundingClientRect();
@@ -48,7 +44,6 @@ do ()->
 				return
 			sliderMoveInterval = setInterval ->
 				if minLeft <= curSliderBodyLeft <= maxLeft
-					console.log(1);
 					curSliderBodyLeft = if destination == '+' then curSliderBodyLeft+=step else curSliderBodyLeft-=step
 					sliderBody.style.left = "#{curSliderBodyLeft}px"
 				else

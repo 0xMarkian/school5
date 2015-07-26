@@ -472,7 +472,7 @@ body .hideText {
   position: absolute;
   top: 78%;
   border-radius: 2vmax;
-  background: url("../../img/arrow.png") no-repeat center center;
+  background: url("../img/arrow.png") no-repeat center center;
   background-size: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in;
@@ -486,14 +486,30 @@ body .hideText {
   transform: rotate(-1deg);
 }
 #abus-expres .arrow:hover {
-  background: url("../../img/arrow-only.png") no-repeat center center #006bff;
+  background: url("../img/arrow-only.png") no-repeat center center #006bff;
   background-size: 85%;
 }
+/*
+========================================================
+======	comment: Out teach-collective area		========
+========================================================
+*/
 #teach {
   width: 100%;
-  height: 225%;
+  height: 230%;
   z-index: 2;
   overflow: hidden;
+  background: #f2f6f9;
+}
+#teach h2 {
+  font-size: 2.3vmax;
+  color: #3a3a3a;
+}
+#teach h3 {
+  margin: 2% 0 0 0;
+  font-size: 1.4vmax;
+  font-weight: normal;
+  color: #81909f;
 }
 #teach .dynamic-image {
   width: 100%;
@@ -507,27 +523,17 @@ body .hideText {
   text-align: center;
   background: #f2f6f9;
 }
-#teach .text-area {
+#teach .teach-inner .text-area {
   width: 100%;
   box-sizing: border-box;
   padding: 2% 20%;
 }
-#teach h2 {
-  font-size: 2.3vmax;
-  color: #3a3a3a;
-}
-#teach h3 {
-  margin: 2% 0 0 0;
-  font-size: 1.4vmax;
-  font-weight: normal;
-  color: #81909f;
-}
-.block-area {
+#teach .teach-inner .block-area {
   width: 100%;
   height: 51%;
   margin: 0;
 }
-.block-area > div {
+#teach .teach-inner .block-area >div {
   width: 100%;
   height: 35.5%;
   display: flex;
@@ -536,7 +542,49 @@ body .hideText {
   perspective: 5200px;
   justify-content: space-around;
 }
-.block-area .teach-circle {
+#teach .teach-inner .block-area >div .line-block {
+  width: 100%;
+  height: 120%;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 0;
+}
+#teach .teach-inner .block-area >div .line-block .line {
+  height: 1%;
+  position: absolute;
+  background: rgba(150,150,150,0.15);
+  transition: all 0.2s ease-in;
+}
+#teach .teach-inner .block-area >div .line-block .line.lineHover {
+  background: rgba(30,30,30,0.5);
+  transition: all 0.3s ease-in;
+}
+#teach .teach-inner .block-area >div .line-block #line-1 {
+  width: 40%;
+  top: 40%;
+  left: 10%;
+  transform: rotate(-23deg);
+}
+#teach .teach-inner .block-area >div .line-block #line-2 {
+  width: 20%;
+  top: 40%;
+  left: 35%;
+  transform: rotate(-45deg);
+}
+#teach .teach-inner .block-area >div .line-block #line-3 {
+  width: 20%;
+  top: 40%;
+  right: 35%;
+  transform: rotate(45deg);
+}
+#teach .teach-inner .block-area >div .line-block #line-4 {
+  width: 40%;
+  top: 40%;
+  right: 10%;
+  transform: rotate(23deg);
+}
+#teach .teach-inner .block-area >div .teach-circle {
   width: 14%;
   height: 100%;
   top: 0;
@@ -548,7 +596,7 @@ body .hideText {
   transition: all 0.5s 0.2s cubic-bezier(0.38, -0.14, 0.38, 1.89);
   transform-style: preserve-3d;
 }
-.block-area .teach-circleHover {
+#teach .teach-inner .block-area >div .teach-circle.teach-circleHover {
   transition: all 0.3s ease-in;
   width: 18%;
   height: 129.5%;
@@ -557,51 +605,10 @@ body .hideText {
   margin-left: -4%;
   transform: rotateY(180deg) !important;
 }
-/*line styles===================*/
-#line-block {
+#teach .teach-inner .block-area >div .teach-circle img {
   width: 100%;
-  height: 120%;
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 0;
 }
-#line-block .line {
-  height: 1%;
-  position: absolute;
-  background: rgba(150,150,150,0.15);
-  transition: all 0.2s ease-in;
-}
-#line-block .lineHover {
-  background: rgba(30,30,30,0.5);
-  transition: all 0.3s ease-in;
-}
-#line-block #line-1 {
-  width: 40%;
-  top: 40%;
-  left: 10%;
-  transform: rotate(-23deg);
-}
-#line-block #line-2 {
-  width: 20%;
-  top: 40%;
-  left: 35%;
-  transform: rotate(-45deg);
-}
-#line-block #line-3 {
-  width: 20%;
-  top: 40%;
-  right: 35%;
-  transform: rotate(45deg);
-}
-#line-block #line-4 {
-  width: 40%;
-  top: 40%;
-  right: 10%;
-  transform: rotate(23deg);
-}
-/*style block && text inside*/
-.teach-circle .front-side {
+#teach .teach-inner .block-area >div .teach-circle .front-side {
   width: 90%;
   height: 90%;
   overflow: hidden;
@@ -614,7 +621,7 @@ body .hideText {
   transform: translate3d(0, 0, 0.2vmax);
   transform-style: preserve-3d;
 }
-.block-area .name {
+#teach .teach-inner .block-area >div .teach-circle .front-side .name {
   width: 100%;
   position: absolute;
   bottom: 3%;
@@ -623,10 +630,7 @@ body .hideText {
   color: rgba(30,30,30,0.8);
   background: rgba(255,255,255,0.8);
 }
-.teach-circle img {
-  width: 100%;
-}
-.block-area .teach-circle .backside {
+#teach .teach-inner .block-area >div .teach-circle .backside {
   width: 100%;
   height: 100%;
   display: flex;
@@ -644,43 +648,41 @@ body .hideText {
   align-items: center;
   justify-content: center;
 }
-.block-area #title {
+#teach .teach-inner .block-area >div.first-level .teach-circle {
+  margin: 0 auto;
+  background: #457fe7;
+}
+#teach .teach-inner .block-area >div.first-level .teach-circle .front-side {
+  border: 0.2vmax solid rgba(230,230,230,0.9);
+}
+#teach .teach-inner .block-area >div.third-level {
+  height: 34%;
+  width: 100%;
+  transition: all 1s linear;
+  left: 0%;
+  box-sizing: border-box;
   margin: 5% auto 0 auto;
   font-size: 2.5vmax;
   text-align: center;
   color: rgba(30,30,30,0.9);
 }
-/*============first-level============*/
-.block-area .first-level .teach-circle {
-  margin: 0 auto;
-  background: #457fe7;
-}
-.block-area .first-level .teach-circle .front-side {
-  border: 0.2vmax solid rgba(230,230,230,0.9);
-}
-/*=================third-level special styles=================*/
-.block-area .third-level {
-  height: 35%;
-  width: 100%;
-  transition: all 1s linear;
-  left: 0%;
-  box-sizing: border-box;
-  margin: 2% auto 0 auto;
-}
-#third-level-body {
+#teach .teach-inner .block-area >div.third-level #third-level-body {
   width: 140%;
   height: 100%;
   display: flex;
   padding: 0 2%;
   position: absolute;
-  top: 10%;
+  top: 40%;
   left: -15%;
 }
-.block-area .third-level .teach-circle {
+#teach .teach-inner .block-area >div.third-level .teach-circle {
   width: 10%;
   background: #5d97ff;
 }
-.block-area .third-level .teach-circleHover {
+#teach .teach-inner .block-area >div.third-level .teach-circle:nth-child(odd) {
+  top: 60%;
+}
+#teach .teach-inner .block-area >div.third-level .teach-circle.teach-circleHover {
   width: 12%;
   height: 120%;
   top: -2%;
@@ -688,26 +690,25 @@ body .hideText {
   left: 1%;
   transform: rotateY(180deg) !important;
 }
-.block-area .third-level .teach-circle:nth-child(odd) {
-  top: 60%;
+#teach .teach-inner .block-area >div.third-level .teach-circle:nth-child(odd).teach-circleHover {
+  top: 58%;
 }
-.block-area .third-level .name {
+#teach .teach-inner .block-area >div.third-level .teach-circle .name {
   width: 100%;
   bottom: 8%;
   padding: 1% 0;
   font-size: 0.82vmax;
 }
-/*================lines block=========================*/
-#teach .third-level .lines {
+#teach .teach-inner .block-area >div.third-level .line-block {
   width: 100%;
   height: 120%;
   position: absolute;
   z-index: -1;
-  top: 14%;
+  top: 40%;
   left: 10%;
   background: none;
 }
-#teach .third-level .lines > div {
+#teach .teach-inner .block-area >div.third-level .line-block >div {
   width: 0.2%;
   height: 110%;
   float: left;
@@ -715,10 +716,10 @@ body .hideText {
   border: 0.1vmax solid #0057eb;
   background: #f4c605;
 }
-#teach .third-level .lines-1 {
+#teach .teach-inner .block-area >div.third-level .line-block >div:nth-child(odd) {
   transform: rotate(58deg);
 }
-#teach .third-level .lines-2 {
+#teach .teach-inner .block-area >div.third-level .line-block >div:nth-child(even) {
   transform: rotate(-55deg);
 }
 /*
@@ -872,14 +873,14 @@ footer #arrow {
   top: 20%;
   right: 8%;
   border-radius: 20vh;
-  background: url("../../img/arrow.png");
+  background: url("../img/arrow.png");
   background-size: cover;
   cursor: pointer;
   transition: all 0.3s ease-in;
   transform: rotate(-90deg);
 }
 footer #arrow:hover {
-  background: url("../../img/arrow-only.png") #1e1e1e;
+  background: url("../img/arrow-only.png") #1e1e1e;
   background-size: 100%;
 }
 /*
@@ -899,7 +900,7 @@ ul#cont3d {
   transform-style: preserve-3d;
   perspective: 50000000px;
 }
-ul#cont3d li {
+ul#cont3d >li {
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -913,7 +914,7 @@ ul#cont3d li {
   transition: all 0.3s ease;
   perspective: 900px;
 }
-ul#cont3d li > div {
+ul#cont3d >li > div {
   width: 100%;
   height: 100%;
   transition: all 0.4s ease-in;
@@ -923,30 +924,30 @@ ul#cont3d li > div {
   transform: scale(0.1);
   opacity: 0;
 }
-ul#cont3d li > div.ctgSideActive {
+ul#cont3d >li > div.ctgSideActive {
   transform: scale(1) !important;
   z-index: 4 !important;
   opacity: 1 !important;
 }
-ul#cont3d li.left {
+ul#cont3d >li.left {
   left: -100%;
   transform: rotateY(-90deg);
   transform-origin: 100% 50%;
 }
-ul#cont3d li.right {
+ul#cont3d >li.right {
   left: 100%;
   transform: rotateY(90deg);
   transform-origin: 0 50%;
 }
-ul#cont3d li.top {
+ul#cont3d >li.top {
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
 }
-ul#cont3d li.bottom {
+ul#cont3d >li.bottom {
   transform: rotateX(90deg);
   transform-origin: 50% 100%;
 }
-ul#cont3d li.under {
+ul#cont3d >li.under {
   transform-origin: 50% 50%;
 }
 ul#cont3d .nonShadow {
@@ -955,255 +956,6 @@ ul#cont3d .nonShadow {
 .contHidden {
   opacity: 0 !important;
   transform: translate3d(0, 0, 0) !important;
-}
-/*=====================================================*/
-/*
-========================================================
-======              About Us Page               ========
-========================================================
-*/
-/*======================================================*/
-#about-main {
-  width: 100%;
-  height: 100%;
-}
-#about-main .text-description {
-  width: 80%;
-  height: 15%;
-  margin: 0 auto;
-  text-align: center;
-}
-#about-main .text-description h1 {
-  margin: 5% 0 2% 0;
-  font-size: 3vmax;
-  font-weight: bolder;
-  color: #4c4c51;
-}
-#about-main .text-description p {
-  font-size: 1.4vmax;
-  line-height: 130%;
-  color: #1e1e1e;
-}
-#about-main .wrap-img {
-  width: 100%;
-  height: 23%;
-  display: flex;
-  overflow: hidden;
-  box-shadow: 0 0 3vh 1vh rgba(190,192,192,0.8);
-}
-#about-main .wrap-img:after {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0,0,0,0.1);
-  content: '';
-}
-#about-main .dynamic-img {
-  width: 33%;
-  height: 98%;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: auto;
-  border: 0.5vh solid #fff;
-}
-#about-main .dynamic-img img {
-  height: 100%;
-  box-sizing: border-box;
-}
-/*
-========================================================
-======                about-category            ========
-========================================================
-*/
-#about-main .wrap-about-category {
-  width: 100%;
-  height: 80%;
-  margin-top: 5%;
-}
-/*======================navigation*/
-#about-main nav {
-  width: 70%;
-  height: 5%;
-  display: flex;
-  margin: 0 auto;
-  text-align: center;
-}
-#about-main nav > div {
-  width: 19%;
-  height: 80%;
-  display: flex;
-  margin: auto;
-  padding: 0.2% 1%;
-  font-size: 1.2vmax;
-  color: #1a294f;
-  border-radius: 1.5vh;
-  background: #5c8be7;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-  justify-content: center;
-  align-items: center;
-}
-#about-main nav > div:hover {
-  color: #fff;
-  background: #006bff;
-  box-shadow: 0 0 0.5vmax 0 #006bff;
-}
-/*=================the block side =================*/
-#about-main .about-category {
-  width: 100%;
-  height: 100%;
-  margin: 3% 0 5% 0;
-}
-#about-main .about-category > div {
-  width: 100%;
-  height: 100%;
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  padding: 4% 0;
-  color: #fff;
-  background: #1f2833;
-}
-#about-main .about-category > div:nth-child(1) {
-  display: block;
-}
-#about-main .about-category .title {
-  font-size: 2vmax;
-  text-align: center;
-}
-/*
-========================================================
-======                comment: SELF-GOVERNMENT  ========
-========================================================
-*/
-#about-main .about-category > .self-government {
-  height: 130%;
-}
-.self-government #epigraph {
-  width: 25%;
-  position: absolute;
-  top: 5%;
-  right: 3%;
-  font-size: 1vmax;
-}
-.self-government #epigraph .autor {
-  text-align: right;
-}
-.self-government .table {
-  width: 70%;
-  height: 80%;
-  margin: 7% auto;
-}
-.self-government .table .main-govern {
-  width: 30%;
-  margin: 2% auto;
-  padding: 1% 4%;
-  font-size: 1.3vmax;
-  text-align: center;
-  border-radius: 3vmax;
-  background: #5c8be7;
-}
-.self-government .table .name {
-  margin-top: 1%;
-  font-size: 1.1vmax;
-  color: #fccc02;
-}
-/*
-========================================================
-======                comment: RATING block     ========
-========================================================
-*/
-#about-main .about-category > div.rating {
-  height: 130%;
-}
-#about-main .rating .table {
-  width: 70%;
-  height: 80%;
-  display: flex;
-  margin: 2.5% auto 2% auto;
-  background: #fff;
-  counter-reset: item;
-  flex-wrap: wrap;
-  perspective: 3000px;
-  justify-content: space-around;
-  align-items: center;
-}
-.rating .table .best-pupil {
-  width: 15%;
-  height: 15%;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  transition: all 0.35s ease-in;
-  transform-style: preserve-3d;
-  perspective: 900px;
-}
-.rating .table .best-pupilHover {
-  width: 22%;
-  height: 22%;
-  z-index: 10;
-  top: 4.5%;
-  left: 3.5%;
-  margin-top: -8%;
-  margin-left: -7%;
-  transform: rotateY(180deg);
-}
-.rating .table .best-pupil:after {
-  width: 11%;
-  min-width: 20px;
-  height: 11%;
-  position: absolute;
-  position: absolute;
-  right: -4%;
-  bottom: -4%;
-  padding: 0.5vmin;
-  text-align: center;
-  border-radius: 10vh;
-  background: #006bff;
-  content: counter(item) ' ';
-  counter-increment: item;
-  transform: translate3d(0, 0, 0.1vh);
-}
-.rating .table .best-pupil .front-side {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  border: 0.5vh solid rgba(31,40,51,0.5);
-  background: #1f2833;
-  background-size: cover !important;
-  transform: translate3d(0, 0, 0);
-  transform-style: preserve-3d;
-}
-.rating .table .best-pupil:nth-child(5) .front-side {
-  background: url("../../img/about/rating/5.jpg");
-}
-.rating .table .best-pupil .backside {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  background: #006bff;
-  transform: translate3d(0, 0, -0.1vh) rotateY(180deg);
-  transform-style: preserve-3d;
-}
-.rating .table .best-pupil .name {
-  margin: 4% 0 2% 0;
-  font-size: 1.5vmax;
-}
-.rating .table .best-pupil .description {
-  font-size: 2.3vh;
-}
-.ghost {
-  background: rgba(0,0,0,0.1);
 }
 /*
 ========================================================
@@ -1312,40 +1064,83 @@ ul#cont3d .nonShadow {
 }
 /*
 ========================================================
+======			comment: Page Learn Program		========
+========================================================
+*/
+#cont3d #educationAct-wrap {
+  width: 100%;
+  height: 130%;
+  padding: 0 10%;
+  box-sizing: border-box;
+}
+#cont3d #educationAct-wrap h2 {
+  text-align: center;
+  margin: 5% 0 3% 0;
+}
+#cont3d #educationAct-wrap >div {
+  float: left;
+  width: 40%;
+  height: 100%;
+  margin: 0 0 0 10%;
+}
+#cont3d #educationAct-wrap >div.text-area >ul {
+  margin: 0 0 5% 0;
+}
+#cont3d #educationAct-wrap >div.text-area >ul h4 {
+  font-size: 1.6vmax;
+  color: #5c8be7;
+  margin: 0 0 2% 0;
+}
+#cont3d #educationAct-wrap >div.text-area >ul p {
+  font-size: 1.3vmax;
+}
+#cont3d #educationAct-wrap >div.infograph-area img {
+  width: 100%;
+}
+#cont3d #educationAct-wrap >div.infograph-area div {
+  width: 30%;
+  font-size: 1.2vmax;
+  top: -16.5%;
+  left: 15%;
+  margin: 0 0 9.5% 0;
+  color: #fff;
+}
+/*
+========================================================
 ======				comment: Page History		========
 ========================================================
 */
-#cont3d > li > #history-main {
-  background: url("../img/history/bg.png") no-repeat center bottom;
+#cont3d #history-wrap {
+  background: url("../img/about/history/bg.png") no-repeat center bottom;
   background-color: rgba(225,225,225,0.45);
   height: 190%;
 }
-#cont3d > li > #history-main .historyStep-wrap {
+#cont3d #history-wrap .historyStep-wrap {
   background: rgba(255,255,255,0.5);
   width: 80%;
   height: 95%;
   margin: 3% auto;
   font-weight: 500;
 }
-#cont3d > li > #history-main .historyStep-wrap img {
+#cont3d #history-wrap .historyStep-wrap img {
   float: left;
   margin-right: 5%;
 }
-#cont3d > li > #history-main .historyStep-wrap .general {
+#cont3d #history-wrap .historyStep-wrap .general {
   width: 85%;
   margin: 0 7%;
   text-align: center;
 }
-#cont3d > li > #history-main .historyStep-wrap .general .title {
+#cont3d #history-wrap .historyStep-wrap .general .title {
   font-size: 2.7vmax;
   margin-bottom: 3%;
 }
-#cont3d > li > #history-main .historyStep-wrap .general .descrip {
+#cont3d #history-wrap .historyStep-wrap .general .descrip {
   font-size: 1.4vmax;
   text-align: left;
   line-height: 140%;
 }
-#cont3d > li > #history-main .historyStep-wrap .yearStep {
+#cont3d #history-wrap .historyStep-wrap .yearStep {
   width: 100%;
   margin: 2% 0;
   background: rgba(0,0,0,0.01);
@@ -1356,17 +1151,17 @@ ul#cont3d .nonShadow {
   transition: all 0.5s ease;
   font-size: 1.5vmax;
 }
-#cont3d > li > #history-main .historyStep-wrap .yearStep:hover {
+#cont3d #history-wrap .historyStep-wrap .yearStep:hover {
   background: rgba(225,225,225,0.45);
 }
-#cont3d > li > #history-main .historyStep-wrap .yearStep img {
+#cont3d #history-wrap .historyStep-wrap .yearStep img {
   width: 30%;
   border-bottom: 3vmax solid transparent;
 }
-#cont3d > li > #history-main .historyStep-wrap .yearStep #special {
+#cont3d #history-wrap .historyStep-wrap .yearStep #special {
   margin-bottom: 5%;
 }
-#cont3d > li > #history-main .historyStep-wrap .yearStep .year {
+#cont3d #history-wrap .historyStep-wrap .yearStep .year {
   font-size: 2vmax;
   font-weight: bold;
   color: #5c8be7;

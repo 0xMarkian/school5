@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 /*
 ========================================================
 ======				comment: my plygins		========
@@ -81,37 +81,35 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){
 		delayForScroll; //variables that define delay for scrolling to top if that needed
 
 	if( !$(cBut).hasClass('buttonActive') ){
-
-
 		/*set active category on cube's side*/
-		function setCtgSideActive(){//set active category on cube's side
+		var setCtgSideActive = function(){//set active category on cube's side
 			$(parentEl).addClass('buttonActive');
 			parentIndex = $(parentEl).index();
 			var elemIndex = $(cBut).index();
 		
 			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child('+(elemIndex+1)+')').className='ctgSideActive';
 		}
-		function setDefaultCtgSideActive(){
+		var setDefaultCtgSideActive = function(){
 			parentIndex =  $(cBut).index();//index of high level button
 			//set active side by default
 			cont3d.querySelector('li:nth-child('+(parentIndex+1)+') > div:nth-child(1)').className='ctgSideActive';
 		}
 
 		/*scrolling and delay*/
-		function scrollTopIfNeedAndSetDelay(){
+		var scrollTopIfNeedAndSetDelay = function(){
 			if( $(document).scrollTop() > 30 ){
 				delayForScroll = 500;scrollTop();
 			}else delayForScroll = 0;
 		}
 
 		/*define function for cube rotation*/
-		function setNewCubePos(){
+		var setNewCubePos = function(){
 			$(cont3d).css('transform-origin',origin1 + origin2).css('transform','translate3d(0,'+navHeight+'px,'+distance+')rotate' +direct+ '(' + degNum + ')');
 		}
-		function setSmallCube(){
+		var setSmallCube = function(){
 			$(cont3d).css('transform-origin','' + origin1 + origin2 + '').css('transform','translate3d(0,-300vh,-600vh) rotate' +direct+ '(' + degNum + ')');
 		}
-		function toNHPMove(){//NHP - Not Home Pages 
+		var toNHPMove = function(){//NHP - Not Home Pages 
 			$('.home').addClass('homeHidden').delay(300).fadeOut();
 			id('wrap').style.background='rgb(15,89,182)'
 			cont3d.style.display='block';
@@ -123,7 +121,7 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){
 			},1100);//must be 11000
 		}
 		
-		function toHPMove(){//HP - Home Page
+		var toHPMove = function(){//HP - Home Page
 			$(cont3d).addClass('contHidden');
 			id('wrap').style.background = ''
 			$('.home').css('display','block')
@@ -214,14 +212,16 @@ window.addEventListener('hashchange',updatestate)
 navPanel.addEventListener('click',function(e){
 	e = e || window.event;
 	var hash, cBut,parentIndex;
+
 	cBut = e.target;
-	while(cBut !== document.body && !hash){
+	while(cBut !== this && !hash){
 		hash = cBut.getAttribute('data-href');		
 		cBut = cBut.parentNode;
 	}
-	location.hash = hash;
+	if(hash){
+		location.hash = hash;
+	}
 })
-
 
 $('#cont3d > li').mouseover(function(){
 	$(this).addClass('nonShadow');
@@ -321,13 +321,12 @@ var block3dMouseOut = function(classElem,classHover,standardWidth){
 		},300);
 	}
 }
-$('.teach-circle').hover(function(){
-	$this = this; block3dMouseOver('teach-circle','teach-circleHover')},
-function(){
-	$this = this; block3dMouseOut('teach-circle','teach-circleHover')
-})
+// $('.teach-circle').hover(function(){
+// 	$this = this; block3dMouseOver('teach-circle','teach-circleHover')},
+// function(){
+// 	$this = this; block3dMouseOut('teach-circle','teach-circleHover')
+// })
 
-$('#teach .third-level').wrapInner('<div id="third-level-body"></div>')
 document.querySelector('#teach .third-level').makeSlider()
 
 
@@ -342,7 +341,7 @@ $(window).scroll( function(){
     		var posObject = $(myElem).offset().top;
     		var bottomOfWindow = $(document).scrollTop() + $(window).height();
         		if( bottomOfWindow >= posObject ){
-        			$(this).css('opacity','1').css('transform','none');
+        			$(this).css('opacity','').css('transform','');
        		 	}
         		else{
         			$(this).css('opacity','0').css('transform','scale(.5,.2)');

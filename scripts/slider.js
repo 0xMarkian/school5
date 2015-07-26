@@ -1,9 +1,4 @@
 (function() {
-  HTMLElement.prototype.addEventListener = function(event, handler) {
-    EventTarget.prototype.addEventListener.call(this, event, handler);
-    return this;
-  };
-
   (function() {
     var getOffset, makeSlider;
     getOffset = function(el) {
@@ -48,7 +43,6 @@
         }
         return sliderMoveInterval = setInterval(function() {
           if ((minLeft <= curSliderBodyLeft && curSliderBodyLeft <= maxLeft)) {
-            console.log(1);
             curSliderBodyLeft = destination === '+' ? curSliderBodyLeft += step : curSliderBodyLeft -= step;
             return sliderBody.style.left = curSliderBodyLeft + "px";
           } else {
