@@ -146,7 +146,6 @@ var clickBar = function(cBut,origin1,origin2,distance,direct,degNum){
 
 		//section where active category of cube side define
 		if(isCtgLevelButton){
-			//тут повинно бути 2 однакових if так як ключову роль грає порядок виклику
 			setCtgSideActive();
 			if(parentButtonActive) {return};
 		}
